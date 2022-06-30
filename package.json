@@ -9,9 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.5",
+    "@mantine/core": "^4.2.11",
+    "@mantine/dates": "^4.2.11",
+    "@mantine/dropzone": "^4.2.11",
+    "@mantine/form": "^4.2.11",
+    "@mantine/hooks": "^4.2.11",
+    "@mantine/modals": "^4.2.11",
+    "@mantine/next": "^4.2.11",
+    "@mantine/notifications": "^4.2.11",
+    "@mantine/prism": "^4.2.11",
+    "@mantine/spotlight": "^4.2.11",
+    "dayjs": "^1.11.3",
     "next": "12.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-feather": "^2.0.10",
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
     "@types/node": "18.0.0",
