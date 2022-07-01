@@ -23,7 +23,7 @@ function Hero() {
 			<section className={"container h-screen flex w-full mx-auto px-4 justify-center items-center"}>
 				<div className={"flex flex-col"}>
 					<div className={"flex flex-col items-center justify-center"}>
-						<h1 className={"px-2 mb-3 text-5xl font-bold leading-tight text-center sm:text-8xl"}>
+						<h1 className={"px-2 mb-3 text-5xl font-bold text-center sm:text-8xl"}>
 							Hej, jeg er {" "}
 							<br/>
 							<div
