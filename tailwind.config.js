@@ -5,6 +5,10 @@ module.exports = {
     ],
     theme: {
         extend: {
+            backgroundImage: {
+                'blob-one': "url('/blob-one.png')",
+                'blob-two': "url('/blob-two.png')",
+            }
         },
     },
     plugins: [],
