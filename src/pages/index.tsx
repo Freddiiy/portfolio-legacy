@@ -59,7 +59,7 @@ function Features() {
 					<FeatureCard icon={<FaDatabase className={"w-8 h-8"}/>} title={"Backend"}
 								 text={"Jeg fungerer også godt i et backend team. Jeg kan skrive Python (Django og FastApi) og jeg har brugt Java (Spring) på min uddannelse til samtlige opgaver"}/>
 					<FeatureCard icon={<FaServer className={"w-8 h-8"}/>} title={"Hosting & CI/CD"}
-								 text={"Jeg har hosted hos for kunder hos Vercel, Heroku og Digital ocean VPS."}/>
+								 text={"Jeg har hosted hos Vercel, Heroku og Digital ocean VPS."}/>
 				</div>
 		</>
 	)
