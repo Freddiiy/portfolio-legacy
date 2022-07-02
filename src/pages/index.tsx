@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Card from "../components/Card/Card";
 import {ReactElement, useEffect, useState} from "react";
 import {FiArrowDown} from "react-icons/fi";
-import {FaServer} from "react-icons/fa"
+import {FaServer, FaCode, FaDatabase} from "react-icons/fa"
 import {Icon} from "react-feather";
 
 const Home: NextPage = () => {
@@ -20,26 +20,31 @@ const Home: NextPage = () => {
 function Hero() {
 	return (
 		<>
-			<section className={"container h-screen flex w-full mx-auto px-4 justify-center items-center"}>
-				<div className={"flex flex-col"}>
+			<section className={"overflow-hidden"}>
+				<div className={"container flex h-screen w-full mx-auto px-4 justify-center items-center"}>
 					<div className={"flex flex-col items-center justify-center"}>
-						<h1 className={"px-2 mb-3 text-5xl font-bold text-center sm:text-8xl"}>
+						<h1 className={"mb-3 text-5xl font-bold text-center sm:text-8xl"}>
 							Hej, jeg er {" "}
 							<br/>
 							<div
-								className={"inline text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"}>
+								className={"inline text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400"}>
 								Frederik Galler
 							</div>
 						</h1>
-						<p className={"text-center max-w-2xl mt-1 mb-8 text-xl lg:text-3xl leading-tight lg:leading-8 text-gray-400"}>
+						<p className={"text-center max-w-2xl mt-1 mb-8 text-xl lg:text-3xl leading-tight lg:leading-8 text-gray-300"}>
 							Og jeg er full-stack webudvikler.
 						</p>
+						<div className={"relative w-full h-full -z-10"}>
+							<div className={"absolute -top-72 -left-4 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob"}/>
+							<div className={"absolute -top-60 -right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob animate-delay-2s"}/>
+							<div className={"absolute -top-80 -right-20 w-96 h-96 bg-pink-500 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob animate-delay-4s"}/>
+							<div className={"absolute -top-96 -left-8 w-96 h-96 bg-emerald-600 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob animate-delay-4s"}/>
+						</div>
 					</div>
-				</div>
-					<div className={"absolute flex flex-col bottom-10"}>
-						<p className={"mb-2 font-bold text-center"}>scroll</p>
+					<div className={"absolute flex flex-col bottom-10 z-10"}>
 						<FiArrowDown className={"w-8 h-8 animate-bounce"}/>
 					</div>
+				</div>
 			</section>
 		</>
 	)
@@ -48,20 +53,21 @@ function Hero() {
 function Features() {
 	return (
 		<>
-			<section className="w-full bg-neutral-800 border border-gray-600 border-opacity-70">
-				<div className={"flex flex-col md: flex-row justify-center max-w-lg"}>
-					<FeatureCard icon={<FaServer className={"w-8 h-8"}/>} title={"Hosting & CI/CD"} text={"Jeg har prøvet flere forskellige " +
-						"hosting-muligheder som Vercel, Heroku og Digital ocean. Derudover har jeg også siddet med " +
-						"Linux-servere da jeg skulle bruge skræddersyet behov"} />
+				<div className={"flex grid lg:grid-cols-3 justify-center"}>
+					<FeatureCard icon={<FaCode className={"w-8 h-8"}/>} title={"Frontend"}
+								 text={"Jeg hører helt klart hjemme i React økosystemet. Det passer perfekt til min tankegang og arbejdsprocess. Jeg bruger for det meste frameworkene \"Next js\" og \"Remix\""}/>
+					<FeatureCard icon={<FaDatabase className={"w-8 h-8"}/>} title={"Backend"}
+								 text={"Jeg fungerer også godt i et backend team. Jeg kan skrive Python (Django og FastApi) og jeg har brugt Java (Spring) på min uddannelse til samtlige opgaver"}/>
+					<FeatureCard icon={<FaServer className={"w-8 h-8"}/>} title={"Hosting & CI/CD"}
+								 text={"Jeg har hosted hos for kunder hos Vercel, Heroku og Digital ocean VPS."}/>
 				</div>
-			</section>
 		</>
 	)
 
-	function FeatureCard({icon, title, text}: {icon: ReactElement, title: string, text: string}) {
+	function FeatureCard({icon, title, text}: { icon: ReactElement, title: string, text: string }) {
 		return (
 			<>
-				<div className={"flex flex-row m-16"}>
+				<div className={"flex flex-row m-8 lg:m-16"}>
 					<div className={"items-start"}>
 						<div className={"bg-gradient-to-r from-blue-400 to-purple-600 p-5 rounded-xl"}>
 							<span className={"w-24 h-26"}>{icon}</span>
