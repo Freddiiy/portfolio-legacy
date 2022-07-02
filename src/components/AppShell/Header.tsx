@@ -41,10 +41,10 @@ export default function Header({children}: { children: ReactNode }) {
 				className={`${isScrolled ? "border-b border-b-gray-600 bg-black border-opacity-50" : "border-transparent"} bg-transparent fixed transition-opacity z-40 w-full h-16 backdrop-blur bg-opacity-80 transition-all`}>
 				<div className={"relative flex items-center justify-between h-full px-5 m-auto sm:container"}>
 					<ProfileMenu/>
-					<div className={"hidden m-auto md:flex justify-end"}>
+					<div className={"hidden m-auto space-x-8 md:flex"}>
 						{links.map((link) => (
 							<Link key={link.name} href={link.href}>
-								<a className={"mr-3 text-gray-300 hover:text-white cursor-pointer"}>
+								<a className={"text-gray-300 hover:text-white cursor-pointer"}>
 									{link.name}
 								</a>
 							</Link>
@@ -74,15 +74,15 @@ export default function Header({children}: { children: ReactNode }) {
 	function ProfileMenu() {
 		return (
 			<>
-				<Popover className={"relative p-3"}>
+				<Popover className={"p-3"}>
 					<Popover.Button>
-						<div className={"flex flex-row items-center focus:outline-0"}>
+						<div className={"flex justify-start focus:outline-0"}>
 							<div className={"relative w-12 h-12 mr-3"}>
 								<Image src={"/profile.png"} alt={""} layout={"fill"} className={"rounded-full"}/>
 							</div>
-							<div className={"flex flex-col"}>
+							<div className={"block"}>
 								<h3 className={"text-xl font-bold"}>Frederik</h3>
-								<p className={"text-gray-400 text-xs"}>Softwareudvikler</p>
+								<p className={"text-gray-400 text-xs"}>Webudvikler</p>
 							</div>
 						</div>
 					</Popover.Button>

@@ -38,7 +38,7 @@ function Hero() {
 							<div className={"absolute -top-72 -left-4 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob"}/>
 							<div className={"absolute -top-60 -right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob animate-delay-2s"}/>
 							<div className={"absolute -top-80 -right-20 w-96 h-96 bg-pink-500 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob animate-delay-4s"}/>
-							<div className={"absolute -top-96 -left-8 w-96 h-96 bg-emerald-600 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob animate-delay-4s"}/>
+							<div className={"absolute -top-96 -left-8 w-96 h-96 bg-emerald-600 rounded-full filter blur-3xl mix-blend-multiply opacity-70 animate-blob animate-delay-6s"}/>
 						</div>
 					</div>
 					<div className={"absolute flex flex-col bottom-10 z-10"}>

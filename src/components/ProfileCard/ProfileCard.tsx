@@ -25,7 +25,7 @@ function ProfileHeader() {
 					<Image src={"/profile.png"} alt={"Mig"} layout={"fill"}/>
 				</div>
 				<h1 className={"text-black text-2xl font-bold mb-3"}>Frederik Galler</h1>
-				<p className={"text-gray-500"}>Softwareudvikler</p>
+				<p className={"text-gray-500"}>Webudvikler</p>
 				<a className={"flex flex-row text-gray-500 items-center"}>
 					<FiMapPin className={"mr-1"}/>
 					{" "} København, Danmark
