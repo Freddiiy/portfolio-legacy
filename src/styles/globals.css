@@ -4,6 +4,7 @@
 
 body {
     @apply text-white bg-black;
+    @apply outline-none;
 }
 
 @layer utilities {
@@ -15,5 +16,9 @@ body {
     }
     .animate-delay-6s {
         animation-delay: 6s;
+    }
+
+    .custom-focus {
+        @apply focus:outline-none focus:ring focus:ring-violet-300 rounded-xl
     }
 }

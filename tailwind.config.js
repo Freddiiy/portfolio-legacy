@@ -42,7 +42,7 @@ module.exports = {
                     "100%": {
                         transform: "scale(1) translate(0px, 0px)",
                     },
-                }
+                },
             }
         },
     },

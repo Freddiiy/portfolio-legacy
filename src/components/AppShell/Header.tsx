@@ -38,13 +38,13 @@ export default function Header({children}: { children: ReactNode }) {
 	return (
 		<>
 			<div
-				className={`${isScrolled ? "border-b border-b-gray-600 bg-black border-opacity-50" : "border-transparent"} bg-transparent fixed transition-opacity z-40 w-full h-16 backdrop-blur bg-opacity-80 transition-all`}>
+				className={`${isScrolled ? "border-b border-b-gray-600 bg-black border-opacity-50 backdrop-blur bg-opacity-80" : "border-transparent"} bg-transparent fixed transition-opacity z-40 w-full h-16 transition-all`}>
 				<div className={"relative flex items-center justify-between h-full px-5 m-auto sm:container"}>
 					<ProfileMenu/>
 					<div className={"hidden m-auto space-x-8 md:flex"}>
 						{links.map((link) => (
 							<Link key={link.name} href={link.href}>
-								<a className={"text-gray-300 hover:text-white cursor-pointer"}>
+								<a className={"text-gray-300 hover:text-white cursor-pointer custom-focus"}>
 									{link.name}
 								</a>
 							</Link>
@@ -75,8 +75,8 @@ export default function Header({children}: { children: ReactNode }) {
 		return (
 			<>
 				<Popover className={"p-3"}>
-					<Popover.Button>
-						<div className={"flex justify-start focus:outline-0"}>
+					<Popover.Button className={"custom-focus"}>
+						<div className={"flex justify-start"}>
 							<div className={"relative w-12 h-12 mr-3"}>
 								<Image src={"/profile.png"} alt={""} layout={"fill"} className={"rounded-full"}/>
 							</div>
