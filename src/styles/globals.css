@@ -5,6 +5,7 @@
 body {
     @apply text-white bg-black;
     @apply outline-none;
+    @apply focus:outline-none focus:ring focus:ring-violet-300 rounded-xl p-1
 }
 
 @layer utilities {
@@ -19,6 +20,6 @@ body {
     }
 
     .custom-focus {
-        @apply focus:outline-none focus:ring focus:ring-violet-300 rounded-xl
+        @apply focus:outline-none focus:ring focus:ring-violet-300 rounded-xl p-1
     }
 }

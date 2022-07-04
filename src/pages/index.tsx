@@ -2,7 +2,7 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Card from "../components/Card/Card";
-import {ReactElement, useEffect, useState} from "react";
+import React, {ReactElement, useEffect, useState} from "react";
 import {FiArrowDown} from "react-icons/fi";
 import {FaServer, FaCode, FaDatabase} from "react-icons/fa"
 import {Icon} from "react-feather";
@@ -53,23 +53,41 @@ function Hero() {
 function Features() {
 	return (
 		<>
-				<div className={"flex grid lg:grid-cols-3 justify-center"}>
-					<FeatureCard icon={<FaCode className={"w-8 h-8"}/>} title={"Frontend"}
+				<div className={"container mx-auto flex grid lg:grid-cols-3 justify-center"}>
+					<FeatureCard className={"emerald-to-blue"} icon={<FaCode className={"w-8 h-8"}/>} title={"Frontend"}
 								 text={"Jeg hører helt klart hjemme i React økosystemet. Det passer perfekt til min tankegang og arbejdsprocess. Jeg bruger for det meste frameworkene \"Next js\" og \"Remix\""}/>
-					<FeatureCard icon={<FaDatabase className={"w-8 h-8"}/>} title={"Backend"}
-								 text={"Jeg fungerer også godt i et backend team. Jeg kan skrive Python (Django og FastApi) og jeg har brugt Java (Spring) på min uddannelse til samtlige opgaver"}/>
-					<FeatureCard icon={<FaServer className={"w-8 h-8"}/>} title={"Hosting & CI/CD"}
-								 text={"Jeg har hosted hos Vercel, Heroku og Digital ocean VPS."}/>
+					<FeatureCard className={"blue-to-purple"} icon={<FaDatabase className={"w-8 h-8"}/>} title={"Backend"}
+								 text={"Jeg fungerer også godt i et backend team. Jeg kan skrive Python (Django og FastApi), Javascript/Typescript og jeg har brugt Java (Spring) på min uddannelse til samtlige opgaver. Og jeg også lidt SQL"}/>
+					<FeatureCard className={"purple-to-emerald"} icon={<FaServer className={"w-8 h-8"}/>} title={"Hosting & CI/CD"}
+								 text={"Jeg har hosted hos Vercel, Heroku og DigitalOcean VPS. Har også lavet egen CI/CD pipeline til få projekter"}/>
 				</div>
 		</>
 	)
 
-	function FeatureCard({icon, title, text}: { icon: ReactElement, title: string, text: string }) {
+	function FeatureCard({icon, title, text, className}: { icon: ReactElement, title: string, text: string, className: "blue-to-purple" | "emerald-to-blue" | "purple-to-emerald"}) {
+
+		let twattr = "bg-gradient-to-r from-blue-400 to-purple-600"
+
+		switch (className) {
+			case "blue-to-purple": {
+				twattr = "bg-gradient-to-r from-blue-400 to-purple-600";
+				break;
+			}
+			case "emerald-to-blue": {
+				twattr = "bg-gradient-to-r from-green-500 to-blue-400";
+				break;
+			}
+			case "purple-to-emerald": {
+				twattr = "bg-gradient-to-r from-purple-600 to-emerald-500"
+				break;
+			}
+		}
+
 		return (
 			<>
 				<div className={"flex flex-row m-8 lg:m-16"}>
 					<div className={"items-start"}>
-						<div className={"bg-gradient-to-r from-blue-400 to-purple-600 p-5 rounded-xl"}>
+						<div className={`${twattr} p-5 rounded-xl`}>
 							<span className={"w-24 h-26"}>{icon}</span>
 						</div>
 					</div>
@@ -97,34 +115,6 @@ function Languages() {
 						  element={<Image src={"/programminglang/python-logo.png"} layout={"fill"}/>}/>
 				</div>
 			</div>
-		</>
-	)
-}
-
-function TextSwitch() {
-	const [display, setDisplay] = useState("");
-	const [counter, setCounter] = useState(0);
-	const texts = [
-		"Og jeg er full-stack webudvikler.",
-		"Og jeg skriver kode.",
-		"Og min mor siger jeg er sød",
-		"Og jeg er glad for software",
-		"Og jeg er super sød"
-	];
-	useEffect(() => {
-		setTimeout(() => {
-			let randomCounter = Math.floor(Math.random() * 4);
-			console.log(randomCounter)
-			setCounter(randomCounter)
-		}, 2000)
-	})
-
-
-	return (
-		<>
-			<p className={"text-center max-w-2xl mt-1 mb-8 text-xl lg:text-3xl leading-tight lg:leading-8 text-gray-400"}>
-				{texts[counter]}
-			</p>
 		</>
 	)
 }

@@ -51,7 +51,7 @@ export default function Header({children}: { children: ReactNode }) {
 						))}
 					</div>
 
-					<div className={"flex hidden md:block"}>
+					<div className={"flex hidden md:block custom-focus"}>
 						<Link href={"https://github.com/Freddiiy"}>
 							<a>
 								<GoMarkGithub className={"text-white w-8 h-8"}/>
@@ -59,7 +59,7 @@ export default function Header({children}: { children: ReactNode }) {
 						</Link>
 					</div>
 					<div className={"block md:hidden cursor-pointer"} onClick={openMenu}>
-						<FiMenu className={"text-white w-8 h-8"}/>
+						<FiMenu className={"text-white w-8 h-8 custom-focus"}/>
 					</div>
 				</div>
 			</div>
