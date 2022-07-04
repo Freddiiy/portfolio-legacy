@@ -5,7 +5,6 @@ import Card from "../components/Card/Card";
 import React, {ReactElement, useEffect, useState} from "react";
 import {FiArrowDown} from "react-icons/fi";
 import {FaServer, FaCode, FaDatabase} from "react-icons/fa"
-import {Icon} from "react-feather";
 
 const Home: NextPage = () => {
 
@@ -70,22 +69,22 @@ function Features() {
 
 		switch (className) {
 			case "blue-to-purple": {
-				twattr = "bg-gradient-to-r from-blue-400 to-purple-600";
+				twattr = "bg-gradient-to-b lg:bg-gradient-to-r from-blue-400 to-purple-600";
 				break;
 			}
 			case "emerald-to-blue": {
-				twattr = "bg-gradient-to-r from-green-500 to-blue-400";
+				twattr = "bg-gradient-to-b lg:bg-gradient-to-r from-green-500 to-blue-400";
 				break;
 			}
 			case "purple-to-emerald": {
-				twattr = "bg-gradient-to-r from-purple-600 to-emerald-500"
+				twattr = "bg-gradient-to-b lg:bg-gradient-to-r  from-purple-600 to-emerald-500"
 				break;
 			}
 		}
 
 		return (
 			<>
-				<div className={"flex flex-row m-8 lg:m-16"}>
+				<div className={"flex flex-row m-6 lg:m-2"}>
 					<div className={"items-start"}>
 						<div className={`${twattr} p-5 rounded-xl`}>
 							<span className={"w-24 h-26"}>{icon}</span>
@@ -99,6 +98,24 @@ function Features() {
 			</>
 		)
 	}
+}
+
+function SkillsSliderSection() {
+	return (
+		<>
+		</>
+	)
+
+	function Skill({logo}:{logo?: string}) {
+		return (
+			<>
+				<div className={"inline-block"}>
+					<h1>Test</h1>
+				</div>
+			</>
+		)
+	}
+
 }
 
 function Languages() {

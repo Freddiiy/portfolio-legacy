@@ -11,7 +11,8 @@ module.exports = {
             },
             animation:  {
                 blob: "blob 8s ease infinite",
-                blob2: "blob2 6s ease infinite"
+                blob2: "blob2 6s ease infinite",
+                skillsSlider: "skillsSlider 2s linear infinite"
             },
             keyframes: {
                 blob: {
@@ -43,6 +44,11 @@ module.exports = {
                         transform: "scale(1) translate(0px, 0px)",
                     },
                 },
+                skillsSlider: {
+                    "100%": {
+                        transform: "translateX(-66.666%)"
+                    }
+                }
             }
         },
     },
