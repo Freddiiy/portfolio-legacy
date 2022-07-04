@@ -12,7 +12,6 @@ const Home: NextPage = () => {
 		<>
 			<Hero/>
 			<Features/>
-			<Skills />
 		</>
 	)
 }
