@@ -12,6 +12,7 @@ const Home: NextPage = () => {
 		<>
 			<Hero/>
 			<Features/>
+			<Skills />
 		</>
 	)
 }
@@ -100,16 +101,33 @@ function Features() {
 	}
 }
 
-function SkillsSliderSection() {
+function Skills() {
 	return (
 		<>
+			<div className={"w-screen inline-block h-12 whitespace-nowrap"}>
+				<div className={"block overflow-hidden whitespace-nowrap animate-skillsSlider"}>
+					<Skill />
+					<Skill />
+					<Skill />
+					<Skill />
+					<Skill />
+				</div>
+				<div className={"block overflow-hidden whitespace-nowrap animate-skillsSlider"}>
+					<Skill />
+					<Skill />
+					<Skill />
+					<Skill />
+					<Skill />
+					<Skill />
+				</div>
+			</div>
 		</>
 	)
 
 	function Skill({logo}:{logo?: string}) {
 		return (
 			<>
-				<div className={"inline-block"}>
+				<div className={"inline-block mx-2"}>
 					<h1>Test</h1>
 				</div>
 			</>
