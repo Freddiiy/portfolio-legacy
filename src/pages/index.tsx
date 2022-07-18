@@ -248,9 +248,11 @@ function AboutMe() {
             Jeg er udvikler og bosat i København. Jeg har stor passion for mit
             håndværk.
             <br />
-            I 2011 opdagede jeg at man kunne programmere mods til Minecraft.
-            Ligesiden har jeg været hooked på software. Dog lige siden jeg var
+            <br />
+            I 2011 opdagede jeg at man kunne programmere mods til Minecraft. Fra
+            den dag har jeg været hooked på software. Dog lige siden jeg var
             lille har jeg været pjattet med teknologi.
+            <br />
             <br />
             Efter nogle år med små mods til forskellige spil, fik jeg øjnene op
             for business-programmering. Der startede jeg på TEC i Datatekniker
