@@ -158,7 +158,7 @@ function Features() {
           </div>
           <div className={"ml-3"}>
             <h3 className={"font-bold text-xl text-white"}>{title}</h3>
-            <p className={"text-gray-500"}>{text}</p>
+            <p className={"text-gray-400"}>{text}</p>
           </div>
         </div>
       </>
@@ -169,7 +169,7 @@ function Features() {
 function Skills() {
   return (
     <section className="container mx-auto mt-20 w-full">
-      <h3 className="text-center text-white text-4xl font-bold mb-4">
+      <h3 className="text-center text-white text-3xl md:text-4xl font-bold mb-4">
         Hvad jeg bruger mest
       </h3>
       <div className="flex flex-row gap-6 justify-center m-6 flex-wrap">
@@ -211,9 +211,11 @@ function AboutMe() {
     <section className="container mx-auto mt-20 w-full">
       <div className="flex flex-col lg:flex-row m-6">
         <div className="col-span-4 row-span-3">
-          <h3 className="mb-4 text-4xl font-bold">Om mig og mig selv</h3>
-          <p>
-            Jeg er udvikler og jeg bor i København. Jeg har stor passion for mit
+          <h3 className="mb-4 text-center text-3xl md:text-4xl font-bold">
+            Om mig og mig selv
+          </h3>
+          <p className="text-gray-400">
+            Jeg er udvikler og bosat i København. Jeg har stor passion for mit
             håndværk.
             <br />
             I 2011 opdagede jeg at man kunne programmere mods til Minecraft.
@@ -226,7 +228,7 @@ function AboutMe() {
             jeg ønskede, så jeg satte mig igang med HF så jeg kunne blive
             datamatiker hos CPHBusiness. Det er jeg rigtig glad for.
           </p>
-          <button className="pt-4 text-blue-400">
+          <button className="pt-4 text-blue-400 font-bold">
             Lad os lave noget sammen!
           </button>
         </div>
