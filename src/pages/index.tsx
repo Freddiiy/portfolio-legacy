@@ -238,8 +238,8 @@ function Skills() {
 
 function AboutMe() {
   return (
-    <section className="container mx-auto mt-20 w-full">
-      <div className="flex flex-col lg:flex-row m-6 max-w-7xl">
+    <section className="container mx-auto mt-20 w-full max-w-7xl">
+      <div className="flex flex-col lg:flex-row m-6 ">
         <div className="col-span-4 row-span-3">
           <h3 className="mb-4 text-center text-3xl md:text-4xl font-bold">
             Om mig og mig selv
