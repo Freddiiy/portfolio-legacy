@@ -88,7 +88,11 @@ function Hero() {
 function Features() {
   return (
     <>
-      <div className={"container mx-auto grid lg:grid-cols-3 justify-center"}>
+      <div
+        className={
+          "container mx-auto grid justify-center lg:grid-cols-3 lg:max-w-7xl"
+        }
+      >
         <FeatureCard
           className={"emerald-to-blue"}
           icon={<FaCode className={"w-8 h-8"} />}
@@ -168,15 +172,15 @@ function Features() {
 
 function Skills() {
   return (
-    <section className="container mx-auto mt-20 w-full">
+    <section className="container mx-auto mt-20 w-full max-w-7xl">
       <h3 className="text-center text-white text-3xl md:text-4xl font-bold mb-4">
         Hvad jeg bruger mest
       </h3>
       <div className="flex flex-row gap-6 justify-center m-6 flex-wrap">
-        <SkillsCard element={<FaJsSquare />} title={"JS/TS"} />
-        <SkillsCard element={<FaReact />} title={"React"} />
-        <SkillsCard element={<FaPython />} title={"Python"} />
-        <SkillsCard element={<FaJava />} title={"Java"} />
+        <SkillsIcon element={<FaJsSquare />} title={"JS/TS"} />
+        <SkillsIcon element={<FaReact />} title={"React"} />
+        <SkillsIcon element={<FaPython />} title={"Python"} />
+        <SkillsIcon element={<FaJava />} title={"Java"} />
       </div>
       <div className="flex justify-center">
         <Link href={"/resume"}>
@@ -188,7 +192,7 @@ function Skills() {
     </section>
   );
 
-  function SkillsCard({
+  function SkillsIcon({
     element,
     title,
   }: {
@@ -204,12 +208,29 @@ function Skills() {
       </div>
     );
   }
+
+  function SkillsIconSmall({
+    element,
+    title,
+  }: {
+    element: ReactNode;
+    title: string;
+  }) {
+    return (
+      <div className="flex flex-col justify-center text-center text-2xl">
+        <div className="items-start">
+          <span className="justify-center items-center">{element}</span>
+        </div>
+        <p className="text-lg">{title}</p>
+      </div>
+    );
+  }
 }
 
 function AboutMe() {
   return (
     <section className="container mx-auto mt-20 w-full">
-      <div className="flex flex-col lg:flex-row m-6">
+      <div className="flex flex-col lg:flex-row m-6 max-w-7xl">
         <div className="col-span-4 row-span-3">
           <h3 className="mb-4 text-center text-3xl md:text-4xl font-bold">
             Om mig og mig selv
@@ -231,6 +252,13 @@ function AboutMe() {
           <button className="pt-4 text-blue-400 font-bold">
             Lad os lave noget sammen!
           </button>
+        </div>
+        <div className="relative h-auto w-96">
+          <Image
+            src={"/profile-big.png"}
+            alt="Profile picture of me"
+            layout="fill"
+          />
         </div>
       </div>
     </section>
