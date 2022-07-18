@@ -12,7 +12,11 @@ import {
   FaJava,
   FaJsSquare,
   FaReact,
+  FaDocker,
+  FaGithub,
 } from "react-icons/fa";
+import { TbBrandNextjs, TbBrandSvelte } from "react-icons/tb";
+import { SiTypescript } from "react-icons/si";
 import Link from "next/link";
 
 const Home: NextPage = () => {
@@ -173,14 +177,19 @@ function Features() {
 function Skills() {
   return (
     <section className="container mx-auto mt-20 w-full max-w-7xl">
-      <h3 className="text-center text-white text-3xl md:text-4xl font-bold mb-4">
-        Hvad jeg bruger mest
+      <h3 className="text-center text-white text-xl md:text-2xl font-bold mb-4">
+        Hvad jeg bruger mest til udvikling
       </h3>
-      <div className="flex flex-row gap-6 justify-center m-6 flex-wrap">
-        <SkillsIcon element={<FaJsSquare />} title={"JS/TS"} />
+      <div className="flex flex-row gap-10 justify-center m-6 flex-wrap">
+        <SkillsIcon element={<FaJsSquare />} title={"JS"} />
+        <SkillsIcon element={<SiTypescript size={46} />} title={"TS"} />
         <SkillsIcon element={<FaReact />} title={"React"} />
         <SkillsIcon element={<FaPython />} title={"Python"} />
         <SkillsIcon element={<FaJava />} title={"Java"} />
+        <SkillsIcon element={<TbBrandNextjs />} title={"NextJS"} />
+        <SkillsIcon element={<TbBrandSvelte />} title={"Svelte"} />
+        <SkillsIcon element={<FaDocker />} title={"Docker"} />
+        <SkillsIcon element={<FaGithub />} title={"GitHub"} />
       </div>
       <div className="flex justify-center">
         <Link href={"/resume"}>
