@@ -182,7 +182,7 @@ function Skills() {
       </h3>
       <div className="flex flex-row gap-10 justify-center m-6 flex-wrap">
         <SkillsIcon element={<FaJsSquare />} title={"JS"} />
-        <SkillsIcon element={<SiTypescript size={46} />} title={"TS"} />
+        <SkillsIcon element={<SiTypescript size={42} />} title={"TS"} />
         <SkillsIcon element={<FaReact />} title={"React"} />
         <SkillsIcon element={<FaPython />} title={"Python"} />
         <SkillsIcon element={<FaJava />} title={"Java"} />
