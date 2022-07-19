@@ -12,7 +12,7 @@ export default function Footer() {
 			<div className="flex text-center items-center justify-center text-lg">
 				<div className="justify-center text-center">
 					Created with <SiTailwindcss className="inline text-cyan-400" />
-					Tailwind, <FaReact className="inline text-blue-500" /> React, and
+					Tailwind, <FaReact className="inline text-blue-500" /> React, and{" "}
 					<TbBrandNextjs className="inline" /> Next. Hosted at{" "}
 					<TbBrandVercel className="inline-block" /> Vercel.
 				</div>
