@@ -29,10 +29,10 @@ export interface ButtonOptions
 
 const colors = {
 	purple:
-		"text-white text-md outline outline-purple-500 bg-purple-500 hover:text-purple-500 hover:bg-transparent",
-	blue: "text-white text-md outline outline-blue-500 bg-blue-500 hover:text-blue-500 hover:bg-transparent",
+		"text-white text-md outline outline-purple-500 bg-purple-500 rounded-md hover:text-purple-500 hover:bg-transparent",
+	blue: "text-white text-md outline outline-blue-500 bg-blue-500 rounded-md hover:text-blue-500 hover:bg-transparent",
 	emerald:
-		"text-white text-md outline outline-emerald-500 bg-blue-500 hover:text-emerald-500 hover:bg-transparet",
+		"text-white text-md outline outline-emerald-500 bg-blue-500 rounded-md hover:text-emerald-500 hover:bg-transparet",
 };
 
 export default function Button(props: ButtonOptions) {
@@ -40,7 +40,7 @@ export default function Button(props: ButtonOptions) {
 
 	return (
 		<button
-			className={`${buttonClasses} rounded-md transition-all duration-200 p-2 ${props.className}`}
+			className={`${buttonClasses} transition-all duration-200 p-2 ${props.className}`}
 		>
 			{props.children}
 		</button>
