@@ -40,7 +40,7 @@ export default function Button(props: ButtonOptions) {
 
 	return (
 		<button
-			className={`${buttonClasses} transition-all duration-200 p-2 rounded ${props.className}`}
+			className={`${buttonClasses} rounded-md transition-all duration-200 p-2 ${props.className}`}
 		>
 			{props.children}
 		</button>
