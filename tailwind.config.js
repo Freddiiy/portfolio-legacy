@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    mode: 'jit',
     content: [
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
@@ -9,7 +10,7 @@ module.exports = {
                 'blob-one': "url('/blob-one.png')",
                 'blob-two': "url('/blob-two.png')",
             },
-            animation:  {
+            animation: {
                 blob: "blob 8s ease infinite",
                 blob2: "blob2 6s ease infinite",
                 skillsSlider: "skillsSlider 6s linear infinite"
