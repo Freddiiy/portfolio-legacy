@@ -5,14 +5,17 @@ import {TbBrandNextjs, TbBrandVercel} from "react-icons/tb";
 export default function Footer() {
 	return (
 		<section className="border-t border-gray-500 bg-zinc-900 py-4">
-			<div className="flex items-center text-lg justify-center">
-				Made with <FaHeart className="mx-1 text-red-600" /> from Copenhagen.
+			<div className="flex text-center items-center justify-center text-lg">
+				Made with <FaHeart className="inline mx-1 text-red-600" /> from
+				Copenhagen.
 			</div>
-			<div className="flex items-center text-lg justify-center">
-				Created with <SiTailwindcss className="mx-1 text-cyan-400" /> Tailwind,{" "}
-				<FaReact className="mx-1 text-blue-500" /> React, and
-				<TbBrandNextjs className="mx-1" /> Next. Hosted at{" "}
-				<TbBrandVercel className="mx-1" /> Vercel.
+			<div className="flex text-center items-center justify-center text-lg">
+				<div className="justify-center text-center">
+					Created with <SiTailwindcss className="inline text-cyan-400" />
+					Tailwind, <FaReact className="inline text-blue-500" /> React, and
+					<TbBrandNextjs className="inline" /> Next. Hosted at{" "}
+					<TbBrandVercel className="inline-block" /> Vercel.
+				</div>
 			</div>
 		</section>
 	);
