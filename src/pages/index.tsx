@@ -26,7 +26,6 @@ const Home: NextPage = () => {
 			<Hero />
 			<Features />
 			<Skills />
-			<AboutMe />
 		</>
 	);
 };
@@ -177,7 +176,7 @@ function Features() {
 
 function Skills() {
 	return (
-		<section className="container mx-auto mt-20 w-full max-w-7xl">
+		<section className="container mx-auto mt-20 w-full max-w-7xl mb-16">
 			<h3 className="text-center text-white text-xl md:text-2xl font-bold mb-4">
 				Hvad jeg bruger mest til udvikling
 			</h3>
@@ -194,9 +193,7 @@ function Skills() {
 			</div>
 			<div className="flex justify-center pt-12">
 				<Link href={"/resume"} passHref>
-					<Button color="purple" value="500">
-						Lad os lave noget sammen!
-					</Button>
+					<Button color="purple">Lad os lave noget sammen!</Button>
 				</Link>
 			</div>
 		</section>
@@ -205,7 +202,7 @@ function Skills() {
 	function SkillsIcon({element, title}: {element: ReactNode; title: string}) {
 		return (
 			<div className="flex flex-col justify-center text-center text-5xl">
-				<span className="flex justify-center items-center text-center">
+				<span className="flex justify-center items-center text-center hover:scale-110 transition-all duration-100">
 					{element}
 				</span>
 				<p className="text-xl">{title}</p>
@@ -238,9 +235,7 @@ function AboutMe() {
 						jeg ønskede, så jeg satte mig igang med HF så jeg kunne blive
 						datamatiker hos CPHBusiness. Det er jeg rigtig glad for.
 					</p>
-					<Button color="blue" value="400">
-						Se mit resumé
-					</Button>
+					<Button color="blue">Se mit resumé</Button>
 				</div>
 				<div className="relative h-auto w-96">
 					<Image
