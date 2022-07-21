@@ -6,6 +6,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 
 import { Dialog, Transition, Popover } from "@headlessui/react";
 import ProfileCard from "../ProfileCard/ProfileCard";
+import { useRouter } from "next/router";
 
 const links = [
   {
@@ -67,8 +68,10 @@ export default function Header({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </div>
-
-          <div className={"flex hidden md:block"}>
+          <div className="mr-4">
+            <LocaleSwitch />
+          </div>
+          <div className={"hidden md:block"}>
             <Link href={"https://github.com/Freddiiy"}>
               <a>
                 <GoMarkGithub className={"text-white w-8 h-8"} />
@@ -200,4 +203,27 @@ export default function Header({ children }: { children: ReactNode }) {
       </>
     );
   }
+}
+
+function LocaleSwitch() {
+  const [isEnlishState, setIsEnglishState] = useState<boolean>();
+  let localeState = isEnlishState ? "da-DK" : "en-US";
+  const router = useRouter();
+  const { pathname, asPath, query } = router;
+
+  function handleLocaleChange() {
+    setIsEnglishState(!isEnlishState);
+    router.push({ pathname, query }, asPath, { locale: localeState });
+  }
+
+  return (
+    <>
+      <button
+        className="text-gray-300 hover:text-white text-md"
+        onClick={handleLocaleChange}
+      >
+        {router.locale === "da-DK" ? "English" : "Dansk"}
+      </button>
+    </>
+  );
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "locale": "da-DK",
+    "title": "Hej, jeg er",
+    "subtitle": "Og jeg er full-stack webudvikler.",
+    "features": {
+      "frontend": "Jeg hører helt klart hjemme i React økosystemet. Det passer perfekt til min tankegang og arbejdsprocess. Jeg bruger for det meste frameworkene Next og Remix.",
+      "backend": "Jeg fungerer også godt i et backend team. Jeg kan skrive Python (Django og FastApi), Javascript/Typescript og jeg har brugt Java (Spring) på min uddannelse til samtlige opgaver. Og jeg kan også lidt SQL.",
+      "hosting": "Jeg har hosted hos Vercel, Heroku og DigitalOcean VPS. Har også lavet egen CI/CD pipeline til få projekter."
+    },
+    "dev": "Hvad jeg bruger til udvikling",
+    "actionButton": "Lad os lave noget sammen!"
+  },
+  {
+    "locale": "en-US",
+    "title": "Hi, I am",
+    "subtitle": "and I am a full-stack webdeveloper.",
+    "features": {
+      "frontend": "I feel at home in the React ecosystem. It fits my thought process and work process perfectly. I primarily use the frameworks Next and Remix.",
+      "backend": "I am also I good fit in a backend team. I can do Python (Django and FastApi), Javascript/Typescript and I have used Java (Spring) on my education for several assignments. And I can do a bit of SQL.",
+      "hosting": "I have hosted projects on Vercel, Heroku, and DigitalOcean VPS. I have also made my own CI/CD pipeline for a couple of projects."
+    },
+    "dev": "What I use for development",
+    "actionButton": "Let's make something together!"
+  }
+]
