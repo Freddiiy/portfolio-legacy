@@ -10,18 +10,15 @@ let configOption = {
     },
 }
 
-export async function sendMail(from: string, subject: string, text: string) {
+export async function sendMail(from: string, to: string, subject: string, text: string) {
     let transporter = nodemailer.createTransport(configOption)
 
     let info = await transporter.sendMail({
         from: from,
-        to: process.env.MY_EMAIL,
+        to: to,
         subject: subject,
         text: text,
     })
-
-    console.log(info.accepted)
-    console.log(info.rejected)
 
     return [info.accepted, info.pending, info.rejected, info.response]
 }
