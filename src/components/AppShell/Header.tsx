@@ -46,7 +46,7 @@ export default function Header({ children }: { children: ReactNode }) {
           isScrolled
             ? "border-b border-b-gray-600 bg-black border-opacity-50 backdrop-blur bg-opacity-80"
             : "border-transparent"
-        } bg-transparent fixed transition-opacity z-40 w-full h-16 transition-all`}
+        } bg-transparent fixed z-40 w-full h-16 transition-all`}
       >
         <div
           className={
@@ -134,6 +134,7 @@ export default function Header({ children }: { children: ReactNode }) {
           open={isMenuOpen}
           onClose={closeMenu}
           className={"fixed inset-0 z-40 bg-black h-screen w-full"}
+          initialFocus={focusRef}
         >
           <Transition.Child
             as={Fragment}
@@ -152,12 +153,14 @@ export default function Header({ children }: { children: ReactNode }) {
                 <FiX className={"w-8 h-8 text-white"} />
               </div>
               <Dialog.Title
-                className={
-                  "text-lg text-2xl text-center font-medium text-white"
-                }
+                className={"text-2xl text-center font-medium text-white"}
               >
                 Menu
               </Dialog.Title>
+              <div
+                className="tap keyboard before accessibility trapper"
+                ref={focusRef}
+              ></div>
               <div className={"flex flex-col text-center mt-20"}>
                 {links.map((link) => (
                   <MobileLink
@@ -177,20 +180,24 @@ export default function Header({ children }: { children: ReactNode }) {
       </Transition>
     );
   }
-}
 
-function MobileLink({ name, href }: { name: string; href: string }) {
-  return (
-    <>
-      <Link key={name} href={href}>
-        <div
-          className={
-            "mb-5 text-4xl text-gray-300 hover:text-white cursor-pointer"
-          }
-        >
-          {name}
+  function MobileLink({ name, href }: { name: string; href: string }) {
+    return (
+      <>
+        <div className="mb-4">
+          <Link key={name} href={href}>
+            <button
+              type="button"
+              className={
+                "text-4xl text-gray-300 hover:text-white rounded-xl cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+              }
+              onClick={closeMenu}
+            >
+              {name}
+            </button>
+          </Link>
         </div>
-      </Link>
-    </>
-  );
+      </>
+    );
+  }
 }
