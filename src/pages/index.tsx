@@ -20,7 +20,6 @@ import { SiTypescript } from "react-icons/si";
 import Link from "next/link";
 import Button from "../components/Button";
 import indexLocale from "../locales/index.json";
-import { Index } from "../locales/index.t";
 import { useRouter } from "next/router";
 
 const Home: NextPage = () => {

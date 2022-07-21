@@ -68,8 +68,16 @@ export default function Header({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </div>
-          <div className="mr-4">
-            <LocaleSwitch />
+          <div className="flex flex-row justify-center items-center">
+            <div className="mr-4">
+              <LocaleSwitch />
+            </div>
+            <div
+              className={"block md:hidden cursor-pointer"}
+              onClick={openMenu}
+            >
+              <FiMenu className={"text-white w-8 h-8"} />
+            </div>
           </div>
           <div className={"hidden md:block"}>
             <Link href={"https://github.com/Freddiiy"}>
@@ -77,9 +85,6 @@ export default function Header({ children }: { children: ReactNode }) {
                 <GoMarkGithub className={"text-white w-8 h-8"} />
               </a>
             </Link>
-          </div>
-          <div className={"block md:hidden cursor-pointer"} onClick={openMenu}>
-            <FiMenu className={"text-white w-8 h-8"} />
           </div>
         </div>
       </div>
