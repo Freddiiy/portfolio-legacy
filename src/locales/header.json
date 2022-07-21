@@ -1,0 +1,54 @@
+[
+  {
+    "locale": "da-DK",
+    "profile": {
+      "name": "Frederik Galler",
+      "title": "Webudvikler",
+      "location": "København, Danmark"
+    },
+    "links": [
+      {
+        "name": "Hjem",
+        "href": "/"
+      },
+      {
+        "name": "Om mig",
+        "href": "/about"
+      },
+      {
+        "name": "Kontakt",
+        "href": "/contact"
+      },
+      {
+        "name": "Resumé",
+        "href": "/resume"
+      }
+    ]
+  },
+  {
+    "locale": "en-US",
+    "profile": {
+      "name": "Frederik Galler",
+      "title": "Web developer",
+      "location": "Copenhagen, Denmark"
+    },
+    "links": [
+      {
+        "name": "Home",
+        "href": "/"
+      },
+      {
+        "name": "About me",
+        "href": "/about"
+      },
+      {
+        "name": "Contact",
+        "href": "/contact"
+      },
+      {
+        "name": "Resumé",
+        "href": "/resume"
+      }
+    ]
+  }
+]

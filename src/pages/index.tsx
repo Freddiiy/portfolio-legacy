@@ -20,11 +20,10 @@ import { SiTypescript } from "react-icons/si";
 import Link from "next/link";
 import Button from "../components/Button";
 import indexLocale from "../locales/index.json";
-import { useRouter } from "next/router";
+import { useLocale } from "../hooks/useLocale";
 
 const Home: NextPage = () => {
-  const { locale, locales, asPath } = useRouter();
-  let [localeText] = indexLocale.filter((l) => l.locale === locale);
+  let localeText = useLocale(indexLocale);
 
   return (
     <>

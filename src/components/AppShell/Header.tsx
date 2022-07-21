@@ -6,31 +6,16 @@ import { FiMenu, FiX } from "react-icons/fi";
 
 import { Dialog, Transition, Popover } from "@headlessui/react";
 import ProfileCard from "../ProfileCard/ProfileCard";
+import headerLocale from "../../locales/header.json";
 import { useRouter } from "next/router";
-
-const links = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Om mig",
-    href: "/about",
-  },
-  {
-    name: "Kontakt",
-    href: "/contact",
-  },
-  {
-    name: "Resume",
-    href: "/resume",
-  },
-];
+import { useLocale } from "../../hooks/useLocale";
 
 export default function Header({ children }: { children: ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const openMenu = () => setIsMenuOpen(true);
   const closeMenu = () => setIsMenuOpen(false);
+
+  let localeText = useLocale(headerLocale);
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -56,7 +41,7 @@ export default function Header({ children }: { children: ReactNode }) {
         >
           <ProfileMenu />
           <div className={"hidden m-auto space-x-8 md:flex"}>
-            {links.map((link) => (
+            {localeText.links.map((link: any) => (
               <Link key={link.name} href={link.href}>
                 <a
                   className={
@@ -110,7 +95,9 @@ export default function Header({ children }: { children: ReactNode }) {
               </div>
               <div className={"block"}>
                 <h3 className={"text-xl font-bold"}>Frederik</h3>
-                <p className={"text-gray-400 text-xs"}>Webudvikler</p>
+                <p className={"text-gray-400 text-xs"}>
+                  {localeText.profile.title}
+                </p>
               </div>
             </div>
           </Popover.Button>
@@ -170,7 +157,7 @@ export default function Header({ children }: { children: ReactNode }) {
                 ref={focusRef}
               ></div>
               <div className={"flex flex-col text-center mt-20"}>
-                {links.map((link) => (
+                {localeText.links.map((link: any) => (
                   <MobileLink
                     key={link.name}
                     name={link.name}
