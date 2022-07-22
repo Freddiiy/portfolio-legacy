@@ -53,7 +53,7 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 gap-3">
             <div className="col-span-6 sm:col-span-3">
               <Input
-                label={contactText.email}
+                label={contactText.name}
                 type="email"
                 name="email"
                 value={formData.email}
@@ -62,7 +62,7 @@ export default function ContactForm() {
             </div>
             <div className="col-span-6 sm:col-span-3">
               <Input
-                label={contactText.name}
+                label={contactText.email}
                 type="email"
                 name="email"
                 value={formData.email}
