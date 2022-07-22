@@ -50,7 +50,7 @@ export default function ContactForm() {
     <>
       <form onSubmit={handleSubmit}>
         <div className="px-4 py-4">
-          <div className="grid grid-rows-2 gap-3">
+          <div className="grid grid-cols-1 gap-3">
             <div className="col-span-6 sm:col-span-3">
               <Input
                 label={contactText.email}
@@ -59,6 +59,8 @@ export default function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
               />
+            </div>
+            <div className="col-span-6 sm:col-span-3">
               <Input
                 label={contactText.name}
                 type="email"
