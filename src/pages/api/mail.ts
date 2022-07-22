@@ -1,53 +1,47 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { SiUber } from 'react-icons/si';
-import nodemailer, { SendMailOptions } from "nodemailer";
+import type { NextApiRequest, NextApiResponse } from "next";
+import nodemailer from "nodemailer";
 
 export interface Mail {
-  from: string,
-  to: string,
-  subject: string,
-  text: string,
+  from: string;
+  to: string;
+  subject: string;
+  text: string;
 }
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-    let {from, to, subject, text} = req.body;
-
-    sendMail(from, to, subject, text).then(() => {
-        res.status(200)
-    }).catch(() => {
-        res.status(500).json({
-            status: 500,
-            message: "Something went wrong with the mail",
-        })
-    })
-}
-
-
-let configOption = {
-    host: "outlook.office365.com",
-    port: 993,
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  let configOption = {
+    host: "mail.privateemail.com",
+    port: 465,
     secure: true,
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
-}
+  };
 
-export async function sendMail(from: string, to: string, subject: string, text: string) {
-    let transporter = nodemailer.createTransport(configOption)
+  let { from, subject, text } = req.body;
 
-    let info = await transporter.sendMail({
-        from: from,
-        to: to,
-        subject: subject,
-        text: text,
-    })
+  let transporter = nodemailer.createTransport(configOption);
 
-    console.log(info)
-
-    return [info.accepted, info.pending, info.rejected, info.response]
+  let info = transporter.sendMail(
+    {
+      from: "kontakt@frederikgaller.com",
+      to: "frederikgaller@live.dk",
+      replyTo: from,
+      subject: subject,
+      text: text,
+    },
+    (error, info) => {
+      if (error) {
+        console.log(error);
+        res.status(500).json({
+          status: 500,
+          info: "There was an error sending the message",
+        });
+      } else {
+        res.status(200).json({ status: 200, info: info.accepted });
+      }
+    }
+  );
 }

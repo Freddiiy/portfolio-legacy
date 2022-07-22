@@ -32,7 +32,7 @@ const colors = {
     "text-white text-lg border-2 border-purple-500 bg-purple-500 hover:text-purple-500 hover:bg-transparent",
   blue: "text-white text-lg border-2 border-blue-500 bg-blue-500 hover:text-blue-500 hover:bg-transparent",
   emerald:
-    "text-white text-lg border-2 border-emerald-500 bg-blue-500 hover:text-emerald-500 hover:bg-transparet",
+    "text-white text-lg border-2 border-emerald-500 bg-emerald-500 hover:text-emerald-500 hover:bg-transparent",
 };
 
 export default function Button(props: ButtonOptions) {

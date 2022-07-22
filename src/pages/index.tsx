@@ -21,6 +21,7 @@ import Link from "next/link";
 import Button from "../components/Button";
 import indexLocale from "../locales/index.json";
 import { useLocale } from "../hooks/useLocale";
+import ContactForm from "../features/Contact/ContactForm";
 
 const Home: NextPage = () => {
   let localeText = useLocale(indexLocale);
@@ -30,6 +31,7 @@ const Home: NextPage = () => {
       <Hero />
       <Features />
       <Skills />
+      <ContactForm />
     </>
   );
 
