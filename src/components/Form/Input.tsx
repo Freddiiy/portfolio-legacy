@@ -16,12 +16,15 @@ export default function Input(
     <>
       <div className="flex flex-col">
         {props.label && (
-          <label htmlFor={props.name} className="ml-2">
+          <label
+            htmlFor={props.name}
+            className="block text-md font-medium text-white"
+          >
             {props.label}
           </label>
         )}
         <input
-          className="text-white bg-black border-2 rounded-xl border-white"
+          className={`mt-2 border-2 border-white focus:outline-none focus:border-purple-400 focus:border-2 block w-full shadow-sm sm:text-sm px-4 py-1 rounded-xl bg-black transition-all duration-150 ${props.className}`}
           {...props}
         >
           {children}

@@ -22,6 +22,7 @@ import Button from "../components/Button";
 import indexLocale from "../locales/index.json";
 import { useLocale } from "../hooks/useLocale";
 import ContactForm from "../features/Contact/ContactForm";
+import ContactPage from "../features/Contact/ContactPage";
 
 const Home: NextPage = () => {
   let localeText = useLocale(indexLocale);
@@ -31,7 +32,7 @@ const Home: NextPage = () => {
       <Hero />
       <Features />
       <Skills />
-      <ContactForm />
+      <ContactSection />
     </>
   );
 
@@ -177,7 +178,7 @@ const Home: NextPage = () => {
   function Skills() {
     return (
       <section className="container mx-auto mt-20 w-full max-w-7xl mb-16">
-        <h3 className="text-center text-white text-xl md:text-2xl font-bold mb-4">
+        <h3 className="text-center text-white text-xl sm:text-4xl sm:pb-8 font-bold mb-4">
           {localeText.dev}
         </h3>
         <div className="flex flex-row gap-10 justify-center m-6 flex-wrap">
@@ -215,6 +216,14 @@ const Home: NextPage = () => {
         </div>
       );
     }
+  }
+
+  function ContactSection() {
+    return (
+      <section className="container mx-auto">
+        <ContactPage />
+      </section>
+    );
   }
 
   function AboutMe() {
