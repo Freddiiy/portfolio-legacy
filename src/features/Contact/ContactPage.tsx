@@ -11,9 +11,9 @@ export default function ContactSection() {
           {contactText.contactMe}
         </h2>
         <p className="text-gray-400 pt-4 px-6">{contactText.contactText}</p>
-        <div className="flex px-6 lg:text-center lg:justify-center">
+        <div className="flex px-6 lg:text-center lg:justify-center text-gray-400">
           <ul>
-            <li className="pt-2">phone: 40 85 50 28</li>
+            <li className="pt-2">sms: 40 85 50 28</li>
             <li className="pt-2">email: frederikgaller@live.dk</li>
           </ul>
         </div>

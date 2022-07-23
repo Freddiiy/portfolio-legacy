@@ -6,11 +6,17 @@ import { useLocale } from "../../hooks/useLocale";
 import contactLocale from "../../locales/contactform.json";
 
 export default function ContactForm() {
+  let contactText = useLocale(contactLocale);
   const [isInvalid, setIsInvalid] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonText, setButtonText] = useState("Send");
+  const disableButton = () => setButtonDisabled(true);
+  const enableButton = () => setButtonDisabled(false);
+
   const [error, setError] = useState("");
 
-  let contactText = useLocale(contactLocale);
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     subject: "",
     message: "",
@@ -30,20 +36,49 @@ export default function ContactForm() {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    disableButton();
+    setButtonText("Sender...");
 
-    if (formData.email == "") return;
-    if (formData.subject == "") return;
-    if (formData.message == "") return;
+    console.log("handle submit");
+
+    validateInputFields();
 
     let data = {
+      name: formData.name,
       from: formData.email,
       subject: formData.subject,
       message: formData.message,
     };
 
-    const url = "/api/mail";
-    const response = await axios.post(url, data);
-    const resData = await response.data;
+    const response = await axios.post("/api/mail", data);
+
+    if (response.status == 200) {
+      setButtonText("Sendt!");
+      enableButton();
+      clearInputFields();
+    }
+
+    if (response.status == 500) {
+      setError("Der skete en fejl ved at sende mailen");
+      enableButton();
+    }
+  }
+
+  function validateInputFields() {
+    if (formData.name == "") return false;
+    if (formData.email == "") return false;
+    if (formData.subject == "") return false;
+    if (formData.message == "") return false;
+    return true;
+  }
+
+  function clearInputFields() {
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
   }
 
   return (
@@ -54,9 +89,9 @@ export default function ContactForm() {
             <div className="col-span-6 sm:col-span-3">
               <Input
                 label={contactText.name}
-                type="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
               />
             </div>
@@ -90,18 +125,19 @@ export default function ContactForm() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="mt-2 border-2 border-white focus:outline-none focus:border-purple-400 focus:border-2 block w-full shadow-sm sm:text-sm px-4 py-1 rounded-xl bg-black transition-all duration-150 resize-none"
+              className="mt-2 border-2 border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:border-purple-400 focus:border-2 block w-full shadow-sm sm:text-sm px-4 py-1 rounded-xl bg-black transition-all duration-200 resize-none"
               rows={6}
             />
           </div>
           <div className="flex mt-3 justify-end">
             <Button
               color="emerald"
-              type="submit"
+              type="button"
+              className="w-auto px-6 sm:px-16 opacity-100 disabled:opacity-50 disabled:hover:bg-emerald-500 disabled:hover:text-white disabled:cursor-not-allowed"
+              disabled={buttonDisabled || !validateInputFields()}
               onClick={handleSubmit}
-              className="w-auto px-6 sm:px-16"
             >
-              Send
+              {buttonText}
             </Button>
           </div>
         </div>

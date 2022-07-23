@@ -40,6 +40,7 @@ export default function Button(props: ButtonOptions) {
 
   return (
     <button
+      {...props}
       className={`${buttonClasses} w-full sm:w-auto mx-6 sm:mx-0 rounded-md transition-all duration-200 p-2 ${props.className}`}
     >
       {props.children}

@@ -24,7 +24,7 @@ export default function Input(
           </label>
         )}
         <input
-          className={`mt-2 border-2 border-white focus:outline-none focus:border-purple-400 focus:border-2 block w-full shadow-sm sm:text-sm px-4 py-1 rounded-xl bg-black transition-all duration-150 ${props.className}`}
+          className={`mt-2 border-2 border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:border-purple-400 focus:border-2 block w-full shadow-sm sm:text-sm px-4 py-1 rounded-xl bg-black transition-all duration-200 ${props.className}`}
           {...props}
         >
           {children}
