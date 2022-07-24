@@ -30,8 +30,8 @@ interface BlogPostProps {
 function BlogPost({name, img, date, title, text}: BlogPostProps) {
 	return (
 		<>
+			<Author name={name} img={img} date={date} />
 			<div className="flex justify-center pt-24">
-				<Author name={name} img={img} date={date} />
 				<h2 className="text-4xl font-bold">{title}</h2>
 				<p className="text-sm text-gray-300">{text}</p>
 			</div>
