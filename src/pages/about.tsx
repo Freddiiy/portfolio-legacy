@@ -11,7 +11,7 @@ const About: NextPage = () => {
 			<BlogPost
 				name="Frederik Galler"
 				img="/profile.png"
-				date={new Date("24-06-2022 00:00:00")}
+				date={new Date("2022-06-24 00:00:00")}
 				title={aboutText.title}
 				text={aboutText.text}
 			/>
