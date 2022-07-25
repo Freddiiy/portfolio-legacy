@@ -42,10 +42,7 @@ function BlogPost({name, img, date, title, text}: BlogPostProps) {
 			</div>
 			<div className="flex flex-col justify-center">
 				<h2 className="text-2xl md:text-4xl font-bold">{title}</h2>
-				<p
-					dangerouslySetInnerHTML={text}
-					className="text-xs md:text-sm text-gray-300"
-				></p>
+				<p className="text-xs md:text-sm text-gray-300">{text}</p>
 			</div>
 		</>
 	);
