@@ -8,7 +8,7 @@ const About: NextPage = () => {
   let aboutText = useLocale(aboutLocale);
 
   return (
-    <section className="container mx-auto">
+    <section className="container mx-auto max-w-4xl">
       <BlogPost
         name="Frederik Galler"
         img="/profile.png"
@@ -35,12 +35,12 @@ interface BlogPostProps {
 function BlogPost({ name, img, date, title, text }: BlogPostProps) {
   return (
     <>
-      <div className="flex flex-col justify-center items-center pt-24">
-        <div className="flex-row">
+      <div className="flex flex-col pt-24">
+        <div className="flex-row items-start">
           <Author name={name} img={img} date={date} />
         </div>
       </div>
-      <div className="flex flex-col justify-center text-center">
+      <div className="flex flex-col justify-center">
         <h2 className="text-4xl font-bold">{title}</h2>
         <p className="text-sm text-gray-300">{text}</p>
       </div>
@@ -57,8 +57,8 @@ interface AuthorProps {
 function Author({ name, img, date }: AuthorProps) {
   return (
     <>
-      <div className="flex flex-row">
-        <div className="relative h-24 w-24">
+      <div className="flex flex-row mb-10">
+        <div className="relative h-16 w-16">
           <Image
             src={img}
             alt="profile picture"
@@ -66,9 +66,13 @@ function Author({ name, img, date }: AuthorProps) {
             className="rounded-full"
           />
         </div>
-        <div className="flex-col">
-          <h3>{name}</h3>
-          <p>{date}</p>
+        <div className="flex flex-col ml-6 justify-center">
+          <div className="text-xl">
+            <h3>{name}</h3>
+          </div>
+          <div>
+            <p>{date}</p>
+          </div>
         </div>
       </div>
     </>
