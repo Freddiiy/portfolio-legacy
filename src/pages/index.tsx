@@ -21,14 +21,18 @@ import Link from "next/link";
 import Button from "../components/Button";
 import indexLocale from "../locales/index.json";
 import {useLocale} from "../hooks/useLocale";
-import ContactForm from "../features/Contact/ContactForm";
 import ContactPage from "../features/Contact/ContactPage";
+import headerLocale from "../locales/header.json";
 
 const Home: NextPage = () => {
 	let localeText = useLocale(indexLocale);
+	let headerText = useLocale(headerLocale);
 
 	return (
 		<>
+			<Head>
+				<title>{headerText.links[0].name}</title>
+			</Head>
 			<Hero />
 			<Features />
 			<Skills />

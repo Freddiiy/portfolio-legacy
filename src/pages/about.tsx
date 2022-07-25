@@ -2,25 +2,33 @@ import {NextPage} from "next";
 import Image from "next/image";
 import {useLocale} from "../hooks/useLocale";
 import aboutLocale from "../locales/about.json";
+import headerLocale from "../locales/header.json";
 import dayjs from "dayjs";
+import Head from "next/head";
 
 const About: NextPage = () => {
 	let aboutText = useLocale(aboutLocale);
+	let headerText = useLocale(headerLocale);
 
 	return (
-		<section className="container mx-auto max-w-4xl px-5 md:px-28">
-			<BlogPost
-				name="Frederik Galler"
-				img="/profile.png"
-				date={dayjs()
-					.set("date", 24)
-					.set("month", 6)
-					.set("year", 2022)
-					.format("DD MMM YYYY")}
-				title={aboutText.title}
-				text={aboutText.text}
-			/>
-		</section>
+		<>
+			<Head>
+				<title>{headerText.links[1].name}</title>
+			</Head>
+			<section className="container mx-auto max-w-4xl px-5 md:px-28">
+				<BlogPost
+					name="Frederik Galler"
+					img="/profile.png"
+					date={dayjs()
+						.set("date", 24)
+						.set("month", 6)
+						.set("year", 2022)
+						.format("DD MMM YYYY")}
+					title={aboutText.title}
+					text={aboutText.text}
+				/>
+			</section>
+		</>
 	);
 };
 
@@ -42,7 +50,10 @@ function BlogPost({name, img, date, title, text}: BlogPostProps) {
 			</div>
 			<div className="flex flex-col justify-center">
 				<h2 className="text-2xl md:text-4xl font-bold">{title}</h2>
-				<p className="text-xs md:text-sm text-gray-300">{text}</p>
+				<div
+					className="text-lg md:text-lg text-gray-300 pt-6 leading-loose font-serif"
+					dangerouslySetInnerHTML={{__html: text}}
+				/>
 			</div>
 		</>
 	);

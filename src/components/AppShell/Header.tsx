@@ -92,7 +92,7 @@ export default function Header({children}: {children: ReactNode}) {
 									className={"rounded-full"}
 								/>
 							</div>
-							<div className={"block"}>
+							<div className={"flex flex-col justify-start items-start"}>
 								<h3 className={"text-xl font-bold"}>Frederik</h3>
 								<p className={"text-gray-400 text-xs"}>
 									{localeText.profile.title}
