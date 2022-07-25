@@ -87,7 +87,7 @@ export default function Header({children}: {children: ReactNode}) {
 							<div className={"relative w-12 h-12 mr-3"}>
 								<Image
 									src={"/profile.png"}
-									alt={""}
+									alt={"Profile picture"}
 									layout={"fill"}
 									className={"rounded-full"}
 								/>

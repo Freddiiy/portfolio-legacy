@@ -1,35 +1,39 @@
-import { DetailedHTMLProps, InputHTMLAttributes, ReactNode } from "react";
+import {DetailedHTMLProps, InputHTMLAttributes, ReactNode} from "react";
 
 export interface InputProps
-  extends DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
-  label?: string;
+	extends DetailedHTMLProps<
+		InputHTMLAttributes<HTMLInputElement>,
+		HTMLInputElement
+	> {
+	label?: string;
 }
 
 export default function Input(
-  props: InputProps,
-  { children }: { children: ReactNode }
+	props: InputProps,
+	{children}: {children: ReactNode}
 ) {
-  return (
-    <>
-      <div className="flex flex-col">
-        {props.label && (
-          <label
-            htmlFor={props.name}
-            className="block text-md font-medium text-white"
-          >
-            {props.label}
-          </label>
-        )}
-        <input
-          className={`mt-2 border-2 border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:border-purple-400 focus:border-2 block w-full shadow-sm sm:text-sm px-4 py-1 rounded-xl bg-black transition-all duration-200 ${props.className}`}
-          {...props}
-        >
-          {children}
-        </input>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className="flex flex-col">
+				{props.label && (
+					<label
+						htmlFor={props.name}
+						className="block text-md font-medium text-white"
+					>
+						{props.label}
+					</label>
+				)}
+				<input
+					className={`mt-2 border-2 border-gray-300 ${
+						props.value == "" ? "opacity-50" : "opacity-100"
+					} focus:opacity-100 focus:outline-none focus:border-purple-400 focus:border-2 block w-full shadow-sm sm:text-sm px-4 py-1 rounded-xl bg-black transition-all duration-200 ${
+						props.className
+					}`}
+					{...props}
+				>
+					{children}
+				</input>
+			</div>
+		</>
+	);
 }

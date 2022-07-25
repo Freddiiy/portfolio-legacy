@@ -1,82 +1,85 @@
-import { NextPage } from "next";
+import {NextPage} from "next";
 import Image from "next/image";
-import { useLocale } from "../hooks/useLocale";
+import {useLocale} from "../hooks/useLocale";
 import aboutLocale from "../locales/about.json";
 import dayjs from "dayjs";
 
 const About: NextPage = () => {
-  let aboutText = useLocale(aboutLocale);
+	let aboutText = useLocale(aboutLocale);
 
-  return (
-    <section className="container mx-auto max-w-4xl">
-      <BlogPost
-        name="Frederik Galler"
-        img="/profile.png"
-        date={dayjs()
-          .set("date", 24)
-          .set("month", 6)
-          .set("year", 2022)
-          .format("DD MMM YYYY")}
-        title={aboutText.title}
-        text={aboutText.text}
-      />
-    </section>
-  );
+	return (
+		<section className="container mx-auto max-w-4xl px-5 md:px-28">
+			<BlogPost
+				name="Frederik Galler"
+				img="/profile.png"
+				date={dayjs()
+					.set("date", 24)
+					.set("month", 6)
+					.set("year", 2022)
+					.format("DD MMM YYYY")}
+				title={aboutText.title}
+				text={aboutText.text}
+			/>
+		</section>
+	);
 };
 
 interface BlogPostProps {
-  name: string;
-  img: string;
-  date: string;
-  title: string;
-  text: string;
+	name: string;
+	img: string;
+	date: string;
+	title: string;
+	text: string;
 }
 
-function BlogPost({ name, img, date, title, text }: BlogPostProps) {
-  return (
-    <>
-      <div className="flex flex-col pt-24">
-        <div className="flex-row items-start">
-          <Author name={name} img={img} date={date} />
-        </div>
-      </div>
-      <div className="flex flex-col justify-center">
-        <h2 className="text-4xl font-bold">{title}</h2>
-        <p className="text-sm text-gray-300">{text}</p>
-      </div>
-    </>
-  );
+function BlogPost({name, img, date, title, text}: BlogPostProps) {
+	return (
+		<>
+			<div className="flex flex-col pt-24">
+				<div className="flex-row items-start">
+					<Author name={name} img={img} date={date} />
+				</div>
+			</div>
+			<div className="flex flex-col justify-center">
+				<h2 className="text-2xl md:text-4xl font-bold">{title}</h2>
+				<p
+					dangerouslySetInnerHTML={text}
+					className="text-xs md:text-sm text-gray-300"
+				></p>
+			</div>
+		</>
+	);
 }
 
 interface AuthorProps {
-  name: string;
-  img: string;
-  date: string;
+	name: string;
+	img: string;
+	date: string;
 }
 
-function Author({ name, img, date }: AuthorProps) {
-  return (
-    <>
-      <div className="flex flex-row mb-10">
-        <div className="relative h-16 w-16">
-          <Image
-            src={img}
-            alt="profile picture"
-            layout="fill"
-            className="rounded-full"
-          />
-        </div>
-        <div className="flex flex-col ml-6 justify-center">
-          <div className="text-xl">
-            <h3>{name}</h3>
-          </div>
-          <div>
-            <p>{date}</p>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+function Author({name, img, date}: AuthorProps) {
+	return (
+		<>
+			<div className="flex flex-row mb-10">
+				<div className="relative h-16 w-16">
+					<Image
+						src={img}
+						alt="profile picture"
+						layout="fill"
+						className="rounded-full"
+					/>
+				</div>
+				<div className="flex flex-col ml-6 justify-center">
+					<div className="text-md md:text-lg text-gray-200">
+						<h3>{name}</h3>
+					</div>
+					<div className="text-sm md:text-md text-gray-400">
+						<p>{date}</p>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }
 
 export default About;
