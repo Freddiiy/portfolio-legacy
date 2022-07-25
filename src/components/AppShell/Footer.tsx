@@ -4,7 +4,10 @@ import { TbBrandNextjs, TbBrandVercel } from "react-icons/tb";
 
 export default function Footer() {
   return (
-    <section className="border-t border-gray-500 bg-zinc-900 py-4">
+    <footer
+      id="footer"
+      className="w-full border-t border-gray-500 bg-zinc-900 py-4"
+    >
       <div className="flex text-center items-center justify-center text-lg">
         Made with <FaHeart className="inline mx-1 text-red-600" /> from
         Copenhagen.
@@ -17,6 +20,6 @@ export default function Footer() {
           <TbBrandVercel className="inline-block" /> Vercel.
         </div>
       </div>
-    </section>
+    </footer>
   );
 }
