@@ -10,7 +10,7 @@ import slugify from "slugify";
 import {IProject, projects} from ".";
 import {ParsedUrlQuery} from "querystring";
 import Image from "next/image";
-import {FaGithub} from "react-icons/fa";
+import {FaAngleLeft, FaGithub} from "react-icons/fa";
 import Link from "next/link";
 
 interface IParams extends ParsedUrlQuery {
@@ -56,6 +56,14 @@ function Project({project}: {project: IProject}) {
 				<title>{project.title}</title>
 			</Head>
 			<section className="container mx-auto pt-28 px-4">
+				<Link href={"/projects"} passHref>
+					<a className="group flex flex-row mr-4 justify-start items-center hover:underline cursor-pointer transition-all duration-100 mb-3">
+						<span className="inline relative">
+							<FaAngleLeft className="translate-x-0 group-hover:-translate-x-2 transition-all duration-100" />
+						</span>
+						back
+					</a>
+				</Link>
 				<div className="block mb-6">
 					<h2 className="text-4xl md:text-6xl font-bold md:pb-1">
 						{project.title}

@@ -2,6 +2,7 @@ import {GetStaticPaths, NextPage} from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import {FaAngleLeft} from "react-icons/fa";
 import slugify from "slugify";
 import {UrlObject} from "url";
 
