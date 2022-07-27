@@ -83,7 +83,7 @@ function ProjectCard({
 						src={img}
 						alt={""}
 						layout="fill"
-						className="group-hover:scale-125 transition-all duration-500 rounded-t-lg"
+						className="group-hover:scale-110 transition-all duration-500 rounded-t-lg"
 					/>
 				</div>
 				<div className="p-5">
