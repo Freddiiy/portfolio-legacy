@@ -17,10 +17,26 @@ interface IParams extends ParsedUrlQuery {
 	slug: string;
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = projects.map((p) => ({
-		params: {slug: slugify(p.title.toLowerCase())},
-	}));
+interface IPath {
+	params: {
+		slug: string;
+	};
+	locale: string;
+}
+
+export const getStaticPaths: GetStaticPaths = async ({locales}) => {
+	let paths: IPath[] = [];
+	console.log("locales: " + locales);
+
+	projects.forEach((p) => {
+		locales?.forEach((locale) => {
+			paths.push({
+				params: {slug: slugify(p.title.toLowerCase())},
+				locale,
+			});
+		});
+	});
+
 	return {paths, fallback: false};
 };
 
