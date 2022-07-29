@@ -10,10 +10,11 @@ import headerLocale from "../../locales/header.json";
 import {useRouter} from "next/router";
 import {useLocale} from "../../hooks/useLocale";
 
-export default function Header({children}: {children: ReactNode}) {
+export default function Header({children}: { children: ReactNode }) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const openMenu = () => setIsMenuOpen(true);
 	const closeMenu = () => setIsMenuOpen(false);
+	const router = useRouter();
 
 	let localeText = useLocale(headerLocale);
 
@@ -24,6 +25,8 @@ export default function Header({children}: {children: ReactNode}) {
 			setIsScrolled(window.scrollY > 5);
 		});
 	});
+
+	const colors = ["text-purple-400", "text-emerald-400", "text-blue-400", "text-pink-500", "text-orange-500"]
 
 	return (
 		<>
@@ -39,14 +42,17 @@ export default function Header({children}: {children: ReactNode}) {
 						"relative flex items-center justify-between h-full px-5 m-auto sm:container"
 					}
 				>
-					<ProfileMenu />
+					<ProfileMenu/>
 					<div className={"hidden m-auto space-x-8 md:flex"}>
-						{localeText.links.map((link: any) => (
-							<Link key={link.name} href={link.href}>
+						{localeText.links.map((link: any, i: number) => (
+							<Link key={link.name} href={link.href} passHref>
 								<a
-									className={
-										"text-gray-300 hover:text-white cursor-pointer custom-focus"
-									}
+									className={`
+									${router.pathname === link.href
+										? `${colors[i]} font-bold`
+										: "text-gray-300"
+									} 
+										hover:text-white cursor-pointer transition-all duration-200`}
 								>
 									{link.name}
 								</a>
@@ -55,26 +61,26 @@ export default function Header({children}: {children: ReactNode}) {
 					</div>
 					<div className="flex flex-row justify-center items-center">
 						<div className="mr-4">
-							<LocaleSwitch />
+							<LocaleSwitch/>
 						</div>
 						<div
 							className={"block md:hidden cursor-pointer"}
 							onClick={openMenu}
 						>
-							<FiMenu className={"text-white w-8 h-8"} />
+							<FiMenu className={"text-white w-8 h-8"}/>
 						</div>
 					</div>
 					<div className={"hidden md:block"}>
 						<Link href={"https://github.com/Freddiiy"}>
 							<a>
-								<GoMarkGithub className={"text-white w-8 h-8"} />
+								<GoMarkGithub className={"text-white w-8 h-8"}/>
 							</a>
 						</Link>
 					</div>
 				</div>
 			</div>
 			<main>{children}</main>
-			<ModalMenu />
+			<ModalMenu/>
 		</>
 	);
 
@@ -111,7 +117,7 @@ export default function Header({children}: {children: ReactNode}) {
 						leaveTo="opacity-0 translate-y-1"
 					>
 						<Popover.Panel className={"absolute z-10"}>
-							<ProfileCard />
+							<ProfileCard/>
 						</Popover.Panel>
 					</Transition>
 				</Popover>
@@ -144,7 +150,7 @@ export default function Header({children}: {children: ReactNode}) {
 								className={"flex justify-end mt-4 mr-5 cursor-pointer"}
 								onClick={closeMenu}
 							>
-								<FiX className={"w-8 h-8 text-white"} />
+								<FiX className={"w-8 h-8 text-white"}/>
 							</div>
 							<Dialog.Title
 								className={"text-2xl text-center font-medium text-white"}
@@ -154,7 +160,7 @@ export default function Header({children}: {children: ReactNode}) {
 							<div
 								className="tap keyboard before accessibility trapper"
 								ref={focusRef}
-							></div>
+							/>
 							<div className={"flex flex-col text-center mt-20"}>
 								{localeText.links.map((link: any) => (
 									<MobileLink
@@ -175,7 +181,7 @@ export default function Header({children}: {children: ReactNode}) {
 		);
 	}
 
-	function MobileLink({name, href}: {name: string; href: string}) {
+	function MobileLink({name, href}: { name: string; href: string }) {
 		return (
 			<>
 				<div className="mb-4">
@@ -197,13 +203,13 @@ export default function Header({children}: {children: ReactNode}) {
 }
 
 function LocaleSwitch() {
-	const [isEnlishState, setIsEnglishState] = useState<boolean>();
-	let localeState = isEnlishState ? "da-DK" : "en-US";
+	const [isEnglishState, setIsEnglishState] = useState<boolean>();
+	let localeState = isEnglishState ? "da-DK" : "en-US";
 	const router = useRouter();
 	const {pathname, asPath, query} = router;
 
 	function handleLocaleChange() {
-		setIsEnglishState(!isEnlishState);
+		setIsEnglishState(!isEnglishState);
 		router.push({pathname, query}, asPath, {locale: localeState});
 	}
 
