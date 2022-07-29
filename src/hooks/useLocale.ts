@@ -2,6 +2,8 @@ import {useRouter} from "next/router";
 import path from "path";
 import * as fs from "fs";
 import matter from "gray-matter";
+import {GetStaticPropsContext} from "next";
+import {marked} from "marked";
 
 export const useLocale = (input: any) => {
 	const {locale} = useRouter();
@@ -11,6 +13,13 @@ export const useLocale = (input: any) => {
 
 interface availableLocale {
 	selectedLocale: "da-DK" | "en-US";
+}
+
+export const handleLocaleMd = (_slug: string, ctx: GetStaticPropsContext) => {
+	const {slug, data, content} = getLocaleMd(_slug, ctx.locale)
+	const parsedMarkdown = marked.parse(content);
+
+	return {props: {slug, data, parsedMarkdown}}
 }
 
 export const getLocaleMd = (slug: string, selectedLocale: string | undefined) => {

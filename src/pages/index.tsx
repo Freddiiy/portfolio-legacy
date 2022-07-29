@@ -1,4 +1,4 @@
-import type {NextPage} from "next";
+import type {InferGetStaticPropsType, NextPage} from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Card from "../components/Card/Card";
@@ -20,18 +20,20 @@ import {SiTypescript} from "react-icons/si";
 import Link from "next/link";
 import Button from "../components/Button";
 import indexLocale from "../locales/index.json";
-import {useLocale} from "../hooks/useLocale";
+import {handleLocaleMd, useLocale} from "../hooks/useLocale";
 import ContactPage from "../features/Contact/ContactPage";
 import headerLocale from "../locales/header.json";
+import {GetStaticProps} from "next";
 
-const Home: NextPage = () => {
-	let localeText = useLocale(indexLocale);
-	let headerText = useLocale(headerLocale);
+export const getStaticProps: GetStaticProps = async (ctx) => {
+	return handleLocaleMd("index", ctx);
+};
 
+const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) => {
 	return (
 		<>
 			<Head>
-				<title>{headerText.links[0].name}</title>
+				<title>{data.title}</title>
 			</Head>
 			<Hero />
 			<Features />
@@ -51,7 +53,7 @@ const Home: NextPage = () => {
 					>
 						<div className={"flex flex-col items-center justify-center"}>
 							<h1 className={"mb-3 text-5xl font-bold text-center sm:text-8xl"}>
-								{localeText.title}
+								{data.title}
 								<br />
 								<div
 									className={
@@ -66,7 +68,7 @@ const Home: NextPage = () => {
 									"text-center max-w-2xl mt-1 mb-8 text-xl lg:text-3xl leading-tight lg:leading-8 text-gray-300"
 								}
 							>
-								{localeText.subtitle}
+								{data.subtitle}
 							</p>
 							<div className={"relative w-full h-full -z-10"}>
 								<div
@@ -112,19 +114,19 @@ const Home: NextPage = () => {
 						className={"emerald-to-blue"}
 						icon={<FaCode className={"w-8 h-8"} />}
 						title={"Frontend"}
-						text={localeText.features.frontend}
+						text={data.features.frontend}
 					/>
 					<FeatureCard
 						className={"blue-to-purple"}
 						icon={<FaDatabase className={"w-8 h-8"} />}
 						title={"Backend"}
-						text={localeText.features.backend}
+						text={data.features.backend}
 					/>
 					<FeatureCard
 						className={"purple-to-emerald"}
 						icon={<FaServer className={"w-8 h-8"} />}
 						title={"Hosting & CI/CD"}
-						text={localeText.features.hosting}
+						text={data.features.hosting}
 					/>
 				</div>
 			</>
@@ -183,7 +185,7 @@ const Home: NextPage = () => {
 		return (
 			<section className="container mx-auto mt-20 w-full max-w-7xl mb-16">
 				<h3 className="text-center text-white text-xl sm:text-4xl sm:pb-8 font-bold mb-4">
-					{localeText.dev}
+					{data.dev}
 				</h3>
 				<div className="flex flex-row gap-10 justify-center m-6 flex-wrap">
 					<SkillsIcon element={<FaJsSquare />} title={"JS"} />
@@ -198,7 +200,7 @@ const Home: NextPage = () => {
 				</div>
 				<div className="flex justify-center pt-12">
 					<Link href={"/resume"} passHref>
-						<Button color="purple">{localeText.actionButton}</Button>
+						<Button color="purple">{data.actionButton}</Button>
 					</Link>
 				</div>
 			</section>
@@ -220,45 +222,6 @@ const Home: NextPage = () => {
 		return (
 			<section className="container mx-auto">
 				<ContactPage />
-			</section>
-		);
-	}
-
-	function AboutMe() {
-		return (
-			<section className="container mx-auto mt-20 w-full max-w-7xl">
-				<div className="flex flex-col lg:flex-row m-6 ">
-					<div className="col-span-4 row-span-3">
-						<h3 className="mb-4 text-center text-3xl md:text-4xl font-bold">
-							Om mig og mig selv
-						</h3>
-						<p className="text-gray-400">
-							Jeg er udvikler og bosat i København. Jeg har stor passion for mit
-							håndværk.
-							<br />
-							<br />
-							I 2011 opdagede jeg at man kunne programmere mods til Minecraft.
-							Fra den dag har jeg været hooked på software. Dog lige siden jeg
-							var lille har jeg været pjattet med teknologi.
-							<br />
-							<br />
-							Efter nogle år med små mods til forskellige spil, fik jeg øjnene
-							op for business-programmering. Der startede jeg på TEC i
-							Datatekniker med speciale i programmering. Uddannelsen var ikke
-							lige præcist hvad jeg ønskede, så jeg satte mig igang med HF så
-							jeg kunne blive datamatiker hos CPHBusiness. Det er jeg rigtig
-							glad for.
-						</p>
-						<Button color="blue">Se mit resumé</Button>
-					</div>
-					<div className="relative h-auto w-96">
-						<Image
-							src={"/profile-big.png"}
-							alt="Profile picture of me"
-							layout="fill"
-						/>
-					</div>
-				</div>
 			</section>
 		);
 	}

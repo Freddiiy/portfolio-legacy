@@ -1,20 +1,15 @@
-import {GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage} from "next";
+import {GetStaticProps, InferGetStaticPropsType, NextPage} from "next";
 import Image from "next/image";
-import {getLocaleMd, useLocale} from "../hooks/useLocale";
-import headerLocale from "../locales/header.json";
+import {getLocaleMd, handleLocaleMd, useLocale} from "../hooks/useLocale";
 import dayjs from "dayjs";
 import Head from "next/head";
 import { marked } from "marked";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-	const {slug, data, content} = getLocaleMd("about", ctx.locale);
-	const parsedMarkdown = marked.parse(content);
-	return {props: {slug, data, parsedMarkdown}}
+	return handleLocaleMd("about", ctx);
 };
 
 const About: NextPage = ({slug, data, parsedMarkdown}: InferGetStaticPropsType<typeof getStaticProps>) => {
-	let headerText = useLocale(headerLocale);
-
 	return (
 		<>
 			<Head>
