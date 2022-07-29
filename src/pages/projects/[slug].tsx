@@ -26,7 +26,6 @@ interface IPath {
 
 export const getStaticPaths: GetStaticPaths = async ({locales}) => {
 	let paths: IPath[] = [];
-	console.log("locales: " + locales);
 
 	projects.forEach((p) => {
 		locales?.forEach((locale) => {

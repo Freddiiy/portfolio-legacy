@@ -4,6 +4,11 @@ const nextConfig = {
   i18n: {
     locales: ['da-DK', 'en-US'],
     defaultLocale: 'da-DK'
+  },
+  webpack: (config) => {
+      config.resolve.fallback = {fs: false};
+
+      return config;
   }
 }
 
