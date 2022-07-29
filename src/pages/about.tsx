@@ -4,20 +4,21 @@ import {getLocaleMd, useLocale} from "../hooks/useLocale";
 import headerLocale from "../locales/header.json";
 import dayjs from "dayjs";
 import Head from "next/head";
+import { marked } from "marked";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	const {slug, data, content} = getLocaleMd("about", ctx.locale);
-
-	return {props: {slug, data, content}}
+	const parsedMarkdown = marked.parse(content);
+	return {props: {slug, data, parsedMarkdown}}
 };
 
-const About: NextPage = ({slug, data, content}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const About: NextPage = ({slug, data, parsedMarkdown}: InferGetStaticPropsType<typeof getStaticProps>) => {
 	let headerText = useLocale(headerLocale);
 
 	return (
 		<>
 			<Head>
-				<title>{headerText.links[1].name}</title>
+				<title>{data.title}</title>
 			</Head>
 			<section className="container mx-auto max-w-5xl px-5 md:px-28">
 				<BlogPost
@@ -29,7 +30,7 @@ const About: NextPage = ({slug, data, content}: InferGetStaticPropsType<typeof g
 						.set("year", 2022)
 						.format("DD MMM YYYY")}
 					title={data.title}
-					text={data.text}
+					text={parsedMarkdown}
 				/>
 			</section>
 		</>
@@ -55,7 +56,7 @@ function BlogPost({name, img, date, title, text}: BlogPostProps) {
 			<div className="flex flex-col justify-center">
 				<h2 className="text-2xl md:text-4xl font-bold">{title}</h2>
 				<div
-					className="text-lg md:text-lg pt-6 leading-loose"
+					className="text-lg md:text-lg pt-6 leading-loose block"
 					dangerouslySetInnerHTML={{__html: text}}
 				/>
 			</div>
