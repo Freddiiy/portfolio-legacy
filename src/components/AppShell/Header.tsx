@@ -48,7 +48,7 @@ export default function Header({children}: { children: ReactNode }) {
 							<Link key={link.name} href={link.href} passHref>
 								<a
 									className={`
-									${router.pathname === link.href
+									${router.pathname == link.href
 										? `${colors[i]} font-bold`
 										: "text-gray-300"
 									} 
@@ -191,7 +191,7 @@ export default function Header({children}: { children: ReactNode }) {
 						<button
 							type="button"
 							className={`
-							${router.pathname === href
+							${router.pathname == href
 								? `${colors[iter]}`
 								: "text-gray-300"
 							} 

@@ -54,7 +54,7 @@ function Project({project}: {project: IProject}) {
 			<Head>
 				<title>{project.title}</title>
 			</Head>
-			<section className="container mx-auto pt-28 px-4">
+			<section className="container mx-auto pt-20 px-4">
 				<Link href={"/projects"} passHref>
 					<a className="group flex flex-row mr-4 justify-start items-center hover:underline cursor-pointer transition-all duration-100 mb-3">
 						<span className="inline relative">
