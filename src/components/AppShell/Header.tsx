@@ -10,6 +10,8 @@ import headerLocale from "../../locales/header.json";
 import {useRouter} from "next/router";
 import {useLocale} from "../../hooks/useLocale";
 
+const colors = ["text-purple-400", "text-emerald-400", "text-blue-400", "text-pink-500", "text-orange-500"]
+
 export default function Header({children}: { children: ReactNode }) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const openMenu = () => setIsMenuOpen(true);
@@ -26,8 +28,6 @@ export default function Header({children}: { children: ReactNode }) {
 		});
 	});
 
-	const colors = ["text-purple-400", "text-emerald-400", "text-blue-400", "text-pink-500", "text-orange-500"]
-
 	return (
 		<>
 			<div
@@ -43,7 +43,7 @@ export default function Header({children}: { children: ReactNode }) {
 					}
 				>
 					<ProfileMenu/>
-					<div className={"hidden m-auto space-x-8 md:flex"}>
+					<div className={"hidden m-auto md:flex justify-start"}>
 						{localeText.links.map((link: any, i: number) => (
 							<Link key={link.name} href={link.href} passHref>
 								<a
@@ -52,7 +52,7 @@ export default function Header({children}: { children: ReactNode }) {
 										? `${colors[i]} font-bold`
 										: "text-gray-300"
 									} 
-										hover:text-white cursor-pointer transition-all duration-200`}
+										hover:text-white mx-4 cursor-pointer transition-all duration-200`}
 								>
 									{link.name}
 								</a>
@@ -162,16 +162,18 @@ export default function Header({children}: { children: ReactNode }) {
 								ref={focusRef}
 							/>
 							<div className={"flex flex-col text-center mt-20"}>
-								{localeText.links.map((link: any) => (
+								{localeText.links.map((link: any, i: number) => (
 									<MobileLink
 										key={link.name}
 										name={link.name}
 										href={link.href}
+										iter={i}
 									/>
 								))}
 								<MobileLink
 									name={"Github"}
 									href={"https://github.com/Freddiiy"}
+									iter={1}
 								/>
 							</div>
 						</Dialog.Panel>
@@ -181,16 +183,20 @@ export default function Header({children}: { children: ReactNode }) {
 		);
 	}
 
-	function MobileLink({name, href}: { name: string; href: string }) {
+	function MobileLink({name, href, iter}: { name: string; href: string, iter:number }) {
 		return (
 			<>
 				<div className="mb-4">
 					<Link key={name} href={href}>
 						<button
 							type="button"
-							className={
-								"text-4xl text-gray-300 hover:text-white rounded-xl cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
-							}
+							className={`
+							${router.pathname === href
+								? `${colors[iter]}`
+								: "text-gray-300"
+							} 
+								text-4xl text-gray-300 hover:text-white rounded-xl cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-purple-500 focus-visible:ring-offset-2
+							`}
 							onClick={closeMenu}
 						>
 							{name}
