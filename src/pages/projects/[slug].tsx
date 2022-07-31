@@ -12,6 +12,7 @@ import {ParsedUrlQuery} from "querystring";
 import Image from "next/image";
 import {FaAngleLeft, FaGithub} from "react-icons/fa";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 interface IParams extends ParsedUrlQuery {
 	slug: string;
@@ -49,6 +50,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 };
 
 function Project({project}: {project: IProject}) {
+	const router = useRouter();
 	return (
 		<>
 			<Head>
@@ -60,7 +62,7 @@ function Project({project}: {project: IProject}) {
 						<span className="inline relative">
 							<FaAngleLeft className="translate-x-0 group-hover:-translate-x-2 transition-all duration-100" />
 						</span>
-						back
+						{router.locale == "da-DK" ? "Tilbage" : "Back"}
 					</a>
 				</Link>
 				<div className="block mb-6">
