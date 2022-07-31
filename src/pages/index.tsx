@@ -199,7 +199,7 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 					<SkillsIcon element={<FaGithub />} title={"GitHub"} />
 				</div>
 				<div className="flex justify-center pt-12">
-					<Link href={"/resume"} passHref>
+					<Link href={"/contact"} passHref>
 						<Button color="purple">{data.actionButton}</Button>
 					</Link>
 				</div>
