@@ -13,6 +13,7 @@ import Image from "next/image";
 import {FaAngleLeft, FaGithub} from "react-icons/fa";
 import Link from "next/link";
 import {useRouter} from "next/router";
+import {handleLocalePaths} from "../../hooks/useLocale";
 
 interface IParams extends ParsedUrlQuery {
 	slug: string;
@@ -26,16 +27,7 @@ interface IPath {
 }
 
 export const getStaticPaths: GetStaticPaths = async ({locales}) => {
-	let paths: IPath[] = [];
-
-	projects.forEach((p) => {
-		locales?.forEach((locale) => {
-			paths.push({
-				params: {slug: slugify(p.title.toLowerCase())},
-				locale,
-			});
-		});
-	});
+	const {paths} = handleLocalePaths("/projects", locales);
 
 	return {paths, fallback: false};
 };

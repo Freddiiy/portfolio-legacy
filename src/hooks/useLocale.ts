@@ -15,6 +15,31 @@ interface availableLocale {
 	selectedLocale: "da-DK" | "en-US";
 }
 
+interface IPath {
+	params: {
+		slug: string;
+	};
+	locale: string;
+}
+
+export const handleLocalePaths = (_slug: string, locales: string[] | undefined) => {
+	let paths: IPath[] = []
+
+	const dir = path.join(process.cwd() + "/src/locales"+ _slug);
+	const files = fs.readdirSync(dir);
+
+	files.forEach((f) => {
+		locales?.forEach((l) => {
+			console.log(f)
+			const fileContent = fs.readFileSync(f)
+			const {data} = matter(fileContent);
+			paths.push(data.slug)
+		})
+	})
+
+	return {paths}
+}
+
 export const handleLocaleMd = (_slug: string, ctx: GetStaticPropsContext) => {
 	const {slug, data, content} = getLocaleMd(_slug, ctx.locale)
 	const parsedMarkdown = marked.parse(content);

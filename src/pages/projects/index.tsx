@@ -18,7 +18,7 @@ export let projects: IProject[] = [
 	{
 		title: "WOW Mount Viewer",
 		desc: "Skoleproject. En webapp til at tracke hvilke mounts man ejer i wow.",
-		img: "/projects/mount-viewer.png",
+		img: "/projects/wow-mount-viewer.png",
 		github: "https://github.com/Freddiiy/mount-viewer-frontend",
 		live: "https://mount-viewer.vercel.app/",
 	},
