@@ -66,11 +66,11 @@ const Projects: NextPage = () => {
 };
 
 function ProjectCard({
-	title,
-	desc,
-	img,
-	href,
-}: {
+						 title,
+						 desc,
+						 img,
+						 href,
+					 }: {
 	title: string;
 	desc: string;
 	img: string;
@@ -78,13 +78,15 @@ function ProjectCard({
 }) {
 	return (
 		<Link href={`/projects/${href}`} passHref>
-			<div className="group border bg-neutral-900 border-gray-300 border-opacity-50 hover:border-gray-300 hover:border-opacity-100 transition-all duration-200 rounded-lg hover:cursor-pointer">
-				<div className="relative w-full h-64 overflow-hidden border-black transition-all duration-300 rounded-t-lg bg-">
+			<div
+				className="group border bg-neutral-900 border-gray-300 border-opacity-50 hover:border-gray-300 hover:border-opacity-100 transition-all duration-200 rounded-lg hover:cursor-pointer">
+				<div
+					className="relative h-72 w-full overflow-hidden border-black transition-all duration-300 rounded-t-lg bg-">
 					<Image
 						src={img}
 						alt={""}
-						layout="fill"
-						className="group-hover:scale-110 transition-all duration-500 rounded-t-lg"
+						layout={"fill"}
+						className="group-hover:scale-110 object-cover w-full h-full transition-all duration-500 rounded-t-lg"
 					/>
 				</div>
 				<div className="p-5">

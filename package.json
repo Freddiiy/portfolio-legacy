@@ -21,6 +21,7 @@
     "@mantine/prism": "^4.2.11",
     "@mantine/spotlight": "^4.2.11",
     "@types/nodemailer": "^6.4.4",
+    "@types/react-pdf": "^5.7.2",
     "axios": "^0.27.2",
     "dayjs": "^1.11.4",
     "fs": "^0.0.1-security",
@@ -32,6 +33,7 @@
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-icons": "^4.4.0",
+    "react-pdf": "^5.7.2",
     "sharp": "^0.30.7",
     "slugify": "^1.6.5"
   },
