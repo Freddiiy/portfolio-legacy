@@ -40,6 +40,7 @@ export let projects: IProject[] = [
 	},
 ];
 
+//TODO: make props work
 export const getStaticProps: GetStaticProps = async ({locales}) => {
 	const dirPath = path.join(process.cwd(), "/src/locales/projects");
 	const files = fs.readdirSync(dirPath);
