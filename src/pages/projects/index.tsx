@@ -1,10 +1,13 @@
-import {GetStaticPaths, NextPage} from "next";
+import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import {FaAngleLeft} from "react-icons/fa";
 import slugify from "slugify";
 import {UrlObject} from "url";
+import path from "path";
+import * as fs from "fs";
+import {getLocaleMd, handleLocaleMd} from "../../hooks/useLocale";
 
 export interface IProject {
 	title: string;
@@ -36,6 +39,20 @@ export let projects: IProject[] = [
 		live: "https://www.youtube.com/watch?v=7VPCYVwcpFs",
 	},
 ];
+
+export const getStaticProps: GetStaticProps = async ({locales}) => {
+	const dirPath = path.join(process.cwd(), "/src/locales/projects");
+	const files = fs.readdirSync(dirPath);
+	const projects: IProject[] = [];
+	files.forEach((f) => {
+		locales?.forEach((l) => {
+			const {slug, data} = getLocaleMd(f, l);
+			projects.push({
+				title: data.title.toString(),
+			})
+		})
+	});
+}
 
 const Projects: NextPage = () => {
 	return (

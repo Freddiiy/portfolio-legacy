@@ -1,7 +1,7 @@
 ---
 title: "WOW Mount Viewer"
 desc: "Skoleproject. En webapp til at tracke hvilke mounts man ejer i World of Warcraft."
-img: "/projects/wow-mount-viewer.png
+img: "/projects/wow-mount-viewer.png"
 slug: "wow-mount-viewer"
 ---
 

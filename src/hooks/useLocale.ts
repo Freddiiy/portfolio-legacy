@@ -4,6 +4,7 @@ import * as fs from "fs";
 import matter from "gray-matter";
 import {GetStaticPropsContext} from "next";
 import {marked} from "marked";
+import slugify from "slugify";
 
 export const useLocale = (input: any) => {
 	const {locale} = useRouter();
@@ -29,11 +30,15 @@ export const handleLocalePaths = (_slug: string, locales: string[] | undefined) 
 	const files = fs.readdirSync(dir);
 
 	files.forEach((f) => {
-		locales?.forEach((l) => {
-			console.log(f)
-			const fileContent = fs.readFileSync(f)
-			const {data} = matter(fileContent);
-			paths.push(data.slug)
+		locales?.forEach((locale) => {
+			const fullPath = path.join(dir, f);
+			console.log(fullPath);
+			const fileContent = fs.readFileSync(fullPath, "utf-8");
+			const { data } = matter(fileContent)
+			paths.push({
+				params: {slug: slugify(data.title.toLowerCase())},
+				locale
+			});
 		})
 	})
 
