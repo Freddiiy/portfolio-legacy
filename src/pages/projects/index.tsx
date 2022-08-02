@@ -49,9 +49,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 		ctx.locales?.forEach((locale) => {
 			f = f.replace(/\.md$/, "");
 			f = f.replace("." + locale, "");
-			console.log(f)
 			const {props: {slug, data, parsedMarkdown}} = handleLocaleMd(`${f}`, ctx);
-			console.log(data)
 			projects.push({
 				title: data.title,
 				desc: data.desc,
