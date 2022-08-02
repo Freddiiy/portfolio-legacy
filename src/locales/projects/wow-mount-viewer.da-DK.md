@@ -2,7 +2,9 @@
 title: "WOW Mount Viewer"
 desc: "Skoleproject. En webapp til at tracke hvilke mounts man ejer i World of Warcraft."
 img: "/projects/wow-mount-viewer.png"
+github: "https://github.com/Freddiiy/mount-viewer-frontend"
 slug: "wow-mount-viewer"
+live: "https://mount-viewer.vercel.app/
 ---
 
 Et skoleproject til eksamen i SCRUM. Samarbejdede med et hold af mine venner.<br><br>

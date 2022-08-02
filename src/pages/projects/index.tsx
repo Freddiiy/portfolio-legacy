@@ -41,18 +41,28 @@ export let projects: IProject[] = [
 ];
 
 //TODO: make props work
-export const getStaticProps: GetStaticProps = async ({locales}) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
 	const dirPath = path.join(process.cwd(), "/src/locales/projects");
 	const files = fs.readdirSync(dirPath);
 	const projects: IProject[] = [];
 	files.forEach((f) => {
-		locales?.forEach((l) => {
-			const {slug, data} = getLocaleMd(f, l);
+		ctx.locales?.forEach((locale) => {
+			f = f.replace(/\.md$/, "");
+			f = f.replace("." + locale, "");
+			console.log(f)
+			const {props: {slug, data, parsedMarkdown}} = handleLocaleMd(`${f}`, ctx);
+			console.log(data)
 			projects.push({
-				title: data.title.toString(),
+				title: data.title,
+				desc: data.desc,
+				img: data.img,
+				github: data.github,
+				live: data.live,
 			})
 		})
 	});
+
+	return {props: {projects}}
 }
 
 const Projects: NextPage = () => {
