@@ -1,6 +1,6 @@
 import type {InferGetStaticPropsType, NextPage} from "next";
 import Head from "next/head";
-import React, {ReactElement, ReactNode, useEffect, useState} from "react";
+import React, {forwardRef, ReactElement, ReactNode, Ref, useEffect, useRef, useState} from "react";
 import {FiArrowDown} from "react-icons/fi";
 import {
 	FaServer,
@@ -15,12 +15,8 @@ import {
 } from "react-icons/fa";
 import {TbBrandNextjs, TbBrandSvelte} from "react-icons/tb";
 import {SiTypescript} from "react-icons/si";
-import Link from "next/link";
-import Button from "../components/Button";
-import indexLocale from "../locales/index.json";
 import {handleLocaleMd, useLocale} from "../hooks/useLocale";
 import ContactPage from "../features/Contact/ContactPage";
-import headerLocale from "../locales/header.json";
 import {GetStaticProps} from "next";
 import SubText from "../components/SubText";
 import Title from "../components/Title";
@@ -32,13 +28,22 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 };
 
 const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) => {
+	const scrollTarget = useRef<HTMLDivElement>(null);
+	const scrollToTarget = () => {
+		if (!scrollTarget.current) return;
+		scrollTarget.current.scrollIntoView({
+			block: "center",
+			behavior: "smooth"
+		})
+	}
+
 	return (
 		<>
 			<Head>
 				<title>{data.title}</title>
 			</Head>
-			<Hero data={data}>
-				<Features data={data}/>
+			<Hero data={data} scrollToTarget={scrollToTarget}>
+				<Features data={data} ref={scrollTarget}/>
 				<Skills data={data}/>
 				<ContactSection/>
 			</Hero>
@@ -46,9 +51,11 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 	);
 };
 
-function Hero({children, data}: { children: ReactNode, data: any }) {
+function Hero({children, data, scrollToTarget}: { children: ReactNode, data: any, scrollToTarget: () => void }) {
 	const scrollDistance = useScrollDistance();
 	const parallax = scrollDistance * 0.25
+
+
 	return (
 		<>
 			<section className={"overflow-hidden"}>
@@ -81,11 +88,14 @@ function Hero({children, data}: { children: ReactNode, data: any }) {
 						>
 							{data.subtitle}
 						</p>
-						<AnimatedBackground />
+						<AnimatedBackground/>
 					</div>
-					<div className={"absolute flex flex-col bottom-10 z-10"}>
+					<button
+						className={"absolute flex flex-col bottom-10 z-10 hover:text-purple-400 transition-colors duration-200"}
+						onClick={scrollToTarget}
+					>
 						<FiArrowDown className={"w-8 h-8 animate-bounce"}/>
-					</div>
+					</button>
 				</div>
 				{children}
 			</section>
@@ -93,86 +103,88 @@ function Hero({children, data}: { children: ReactNode, data: any }) {
 	);
 }
 
-function Features({data}: { data: any }) {
+type DataProps = any
+
+const Features = forwardRef<HTMLDivElement, DataProps>((props, ref) => {
+	return (
+		<div ref={ref}
+			 className={
+				 "max-w-7xl mx-auto grid justify-center lg:grid-cols-3 lg:max-w-7xl"
+			 }
+		>
+			<FeatureCard
+				className={"emerald-to-blue"}
+				icon={<FaCode className={"w-8 h-8"}/>}
+				title={"Frontend"}
+				text={props.data.features.frontend}
+			/>
+			<FeatureCard
+				className={"blue-to-purple"}
+				icon={<FaDatabase className={"w-8 h-8"}/>}
+				title={"Backend"}
+				text={props.data.features.backend}
+			/>
+			<FeatureCard
+				className={"purple-to-emerald"}
+				icon={<FaServer className={"w-8 h-8"}/>}
+				title={"Hosting & CI/CD"}
+				text={props.data.features.hosting}
+			/>
+		</div>
+	);
+});
+
+Features.displayName = "Features";
+
+function FeatureCard({
+						 icon,
+						 title,
+						 text,
+						 className,
+					 }: {
+	icon: ReactElement;
+	title: string;
+	text: string;
+	className: "blue-to-purple" | "emerald-to-blue" | "purple-to-emerald";
+}) {
+	let twattr = "bg-gradient-to-r from-blue-400 to-purple-600";
+
+	switch (className) {
+		case "blue-to-purple": {
+			twattr =
+				"bg-gradient-to-b lg:bg-gradient-to-r from-blue-400 to-purple-600";
+			break;
+		}
+		case "emerald-to-blue": {
+			twattr =
+				"bg-gradient-to-b lg:bg-gradient-to-r from-green-500 to-blue-400";
+			break;
+		}
+		case "purple-to-emerald": {
+			twattr =
+				"bg-gradient-to-b lg:bg-gradient-to-r from-purple-600 to-emerald-500";
+			break;
+		}
+	}
+
 	return (
 		<>
-			<div
-				className={
-					"max-w-7xl mx-auto grid justify-center lg:grid-cols-3 lg:max-w-7xl"
-				}
-			>
-				<FeatureCard
-					className={"emerald-to-blue"}
-					icon={<FaCode className={"w-8 h-8"}/>}
-					title={"Frontend"}
-					text={data.features.frontend}
-				/>
-				<FeatureCard
-					className={"blue-to-purple"}
-					icon={<FaDatabase className={"w-8 h-8"}/>}
-					title={"Backend"}
-					text={data.features.backend}
-				/>
-				<FeatureCard
-					className={"purple-to-emerald"}
-					icon={<FaServer className={"w-8 h-8"}/>}
-					title={"Hosting & CI/CD"}
-					text={data.features.hosting}
-				/>
+			<div className={"flex flex-row m-6 lg:m-2"}>
+				<div className={"items-start"}>
+					<div className={`${twattr} p-5 rounded-xl`}>
+						<span className={"w-24 h-26"}>{icon}</span>
+					</div>
+				</div>
+				<div className={"ml-3"}>
+					<h3 className={"font-bold text-xl text-white"}>{title}</h3>
+					<SubText>{text}</SubText>
+				</div>
 			</div>
 		</>
 	);
-
-	function FeatureCard({
-							 icon,
-							 title,
-							 text,
-							 className,
-						 }: {
-		icon: ReactElement;
-		title: string;
-		text: string;
-		className: "blue-to-purple" | "emerald-to-blue" | "purple-to-emerald";
-	}) {
-		let twattr = "bg-gradient-to-r from-blue-400 to-purple-600";
-
-		switch (className) {
-			case "blue-to-purple": {
-				twattr =
-					"bg-gradient-to-b lg:bg-gradient-to-r from-blue-400 to-purple-600";
-				break;
-			}
-			case "emerald-to-blue": {
-				twattr =
-					"bg-gradient-to-b lg:bg-gradient-to-r from-green-500 to-blue-400";
-				break;
-			}
-			case "purple-to-emerald": {
-				twattr =
-					"bg-gradient-to-b lg:bg-gradient-to-r from-purple-600 to-emerald-500";
-				break;
-			}
-		}
-
-		return (
-			<>
-				<div className={"flex flex-row m-6 lg:m-2"}>
-					<div className={"items-start"}>
-						<div className={`${twattr} p-5 rounded-xl`}>
-							<span className={"w-24 h-26"}>{icon}</span>
-						</div>
-					</div>
-					<div className={"ml-3"}>
-						<h3 className={"font-bold text-xl text-white"}>{title}</h3>
-						<SubText>{text}</SubText>
-					</div>
-				</div>
-			</>
-		);
-	}
 }
 
-function Skills({data}: {data: any}) {
+function Skills({data}: { data: any }) {
 	return (
 		<section className="max-w-7xl mx-auto mt-14 sm:mt-20 w-full px-2 mb-16">
 			<Title text={data.dev}/>

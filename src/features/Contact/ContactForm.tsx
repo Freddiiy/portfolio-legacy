@@ -110,7 +110,7 @@ export default function ContactForm() {
 			<form onSubmit={handleSubmit}>
 				<div
 					ref={formBox}
-					className="p-0.5 bg-gradient-to-b from-purple-600 via-emerald-400 rounded-xl transition-all duration-200"
+					className="p-0.5 bg-gradient-to-b from-purple-600 via-emerald-400 rounded-xl"
 					style={{
 						backgroundImage: `linear-gradient(${deg + 45}deg, rgba(147,51,234,1) 0%, rgba(74,222,128,1) 50%, rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%)`,
 					}}>
