@@ -1,7 +1,7 @@
 [
   {
     "locale": "da-DK",
-    "contactMe": "Kontakt mig",
+    "contactMe": "Kontakt mig her",
     "contactText": "Jeg er altid interesseret i muligheder - store og små. Så kontakt mig gerne, også hvis det bare er et spørgsmål! :)",
     "email": "Din email",
     "name": "Dit navn",
@@ -11,8 +11,8 @@
   },
   {
     "locale": "en-US",
-    "contactMe": "Contact me",
-    "contactText": "I am always interested in opportunities - big and small. So don't be afraid to contact me. even if it's just a question! :)",
+    "contactMe": "Contact me here",
+    "contactText": "I am always interested in opportunities - big and small. So don't be afraid to contact me. Even if it's just a question! :)",
     "email": "Your email",
     "name": "Your name",
     "subject": "Subject",

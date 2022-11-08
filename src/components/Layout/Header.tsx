@@ -9,6 +9,7 @@ import ProfileCard from "../ProfileCard/ProfileCard";
 import headerLocale from "../../locales/header.json";
 import {useRouter} from "next/router";
 import {useLocale} from "../../hooks/useLocale";
+import {useScrollCheck} from "../../hooks/useScrollCheck";
 
 const colors = ["text-purple-400", "text-emerald-400", "text-blue-400", "text-pink-500", "text-orange-500"]
 
@@ -20,13 +21,7 @@ export default function Header({children}: { children: ReactNode }) {
 
 	let localeText = useLocale(headerLocale);
 
-	const [isScrolled, setIsScrolled] = useState(false);
-
-	useEffect(() => {
-		window.addEventListener("scroll", () => {
-			setIsScrolled(window.scrollY > 5);
-		});
-	});
+	const isScrolled = useScrollCheck(5)
 
 	return (
 		<>
@@ -35,7 +30,7 @@ export default function Header({children}: { children: ReactNode }) {
 					isScrolled
 						? "border-b border-b-gray-600 bg-black border-opacity-50 backdrop-blur bg-opacity-80"
 						: "border-transparent"
-				} bg-transparent fixed z-40 w-full h-16 transition-all`}
+				} bg-transparent fixed z-40 w-full h-16 transition-all duration-200`}
 			>
 				<div
 					className={
