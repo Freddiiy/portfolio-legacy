@@ -31,9 +31,12 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 	const scrollTarget = useRef<HTMLDivElement>(null);
 	const scrollToTarget = () => {
 		if (!scrollTarget.current) return;
-		scrollTarget.current.scrollIntoView({
-			block: "center",
-			behavior: "smooth"
+		const element = scrollTarget.current.getBoundingClientRect().top;
+		const offset = 65;
+		const offsetPosition = element + window.scrollY - offset;
+		window.scrollTo({
+			top: offsetPosition,
+			behavior: "smooth",
 		})
 	}
 
