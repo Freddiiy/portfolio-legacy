@@ -68,8 +68,8 @@ export default function ContactForm() {
 		if (formData.name == "") return false;
 		if (formData.email == "") return false;
 		if (formData.subject == "") return false;
-		if (formData.message == "") return false;
-		return true;
+		return formData.message != "";
+
 	}
 
 	function clearInputFields() {
@@ -84,61 +84,64 @@ export default function ContactForm() {
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
-				<div className="px-4 py-4">
-					<div className="grid grid-cols-1 gap-3">
-						<div className="col-span-6 sm:col-span-3">
-							<Input
-								label={contactText.name}
-								type="text"
-								name="name"
-								value={formData.name}
-								onChange={handleChange}
-							/>
+				<div className="p-0.5 bg-gradient-to-b from-purple-600 via-emerald-400 rounded-xl">
+					<div className={"bg-black rounded-xl px-6 pt-6 pb-6"}>
+						<div className="grid grid-cols-6 gap-4">
+							<div className="col-span-6 sm:col-span-3">
+								<Input
+									label={contactText.name}
+									type="text"
+									name="name"
+									value={formData.name}
+									onChange={handleChange}
+								/>
+							</div>
+							<div className="col-span-6 sm:col-span-3">
+								<Input
+									label={contactText.subject}
+									type="text"
+									name="subject"
+									value={formData.subject}
+									onChange={handleChange}
+								/>
+							</div>
+							<div className="col-span-6 sm:col-span-6">
+								<Input
+									label={contactText.email}
+									type="email"
+									name="email"
+									value={formData.email}
+									onChange={handleChange}
+								/>
+							</div>
+							<div className="col-span-6">
+								<label
+									htmlFor="message"
+									className="block text-md font-medium text-neutral-400"
+								>
+									{contactText.message}
+								</label>
+								<textarea
+									name="message"
+									value={formData.message}
+									onChange={handleChange}
+									placeholder={contactText.messagePlaceholder}
+									className="mt-2 border border-neutral-400 outline-none focus:border-purple-400 focus:border block w-full shadow-sm sm:text-sm px-4 py-1 rounded-md bg-black transition-all duration-200 resize-none font-bold"
+									rows={6}
+								/>
+							</div>
+							<div className="flex mt-3 justify-end col-span-6">
+								<Button
+									color="emerald"
+									type="button"
+									className="w-auto px-6 sm:px-16 opacity-100 disabled:opacity-50 disabled:hover:bg-emerald-500 disabled:hover:text-white disabled:cursor-not-allowed"
+									disabled={buttonDisabled || !validateInputFields()}
+									onClick={handleSubmit}
+								>
+									{buttonText}
+								</Button>
+							</div>
 						</div>
-						<div className="col-span-6 sm:col-span-3">
-							<Input
-								label={contactText.email}
-								type="email"
-								name="email"
-								value={formData.email}
-								onChange={handleChange}
-							/>
-						</div>
-						<div className="col-span-6 sm:col-span-3">
-							<Input
-								label={contactText.subject}
-								type="text"
-								name="subject"
-								value={formData.subject}
-								onChange={handleChange}
-							/>
-						</div>
-					</div>
-					<div className="pt-3">
-						<label
-							htmlFor="message"
-							className="block text-md font-medium text-white"
-						>
-							{contactText.message}
-						</label>
-						<textarea
-							name="message"
-							value={formData.message}
-							onChange={handleChange}
-							className="mt-2 border-2 border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:border-purple-400 focus:border-2 block w-full shadow-sm sm:text-sm px-4 py-1 rounded-xl bg-black transition-all duration-200 resize-none"
-							rows={6}
-						/>
-					</div>
-					<div className="flex mt-3 justify-end">
-						<Button
-							color="emerald"
-							type="button"
-							className="w-auto px-6 sm:px-16 opacity-100 disabled:opacity-50 disabled:hover:bg-emerald-500 disabled:hover:text-white disabled:cursor-not-allowed"
-							disabled={buttonDisabled || !validateInputFields()}
-							onClick={handleSubmit}
-						>
-							{buttonText}
-						</Button>
 					</div>
 				</div>
 			</form>

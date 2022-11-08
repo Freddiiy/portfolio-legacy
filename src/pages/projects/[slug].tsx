@@ -58,12 +58,12 @@ function Project({project}: {project: IProject}) {
 			</Head>
 			<section className="container mx-auto pt-20 px-4">
 				<Link href={"/projects"} passHref>
-					<a className="group flex flex-row mr-4 justify-start items-center hover:underline cursor-pointer transition-all duration-100 mb-3">
+					<div className="group flex flex-row mr-4 justify-start items-center hover:underline cursor-pointer transition-all duration-100 mb-3">
 						<span className="inline relative">
 							<FaAngleLeft className="translate-x-0 group-hover:-translate-x-2 transition-all duration-100" />
 						</span>
 						{router.locale == "da-DK" ? "Tilbage" : "Back"}
-					</a>
+					</div>
 				</Link>
 				<div className="block mb-6">
 					<h2 className="text-4xl md:text-6xl font-bold md:pb-1">
@@ -72,16 +72,16 @@ function Project({project}: {project: IProject}) {
 					<div className="flex flex-row ml-3 items-center justify-start mb-4">
 						{project.github && (
 							<Link href={project.github} passHref>
-								<a className="mr-3 text-gray-300 hover:text-white cursor-pointer">
+								<div className="mr-3 text-gray-300 hover:text-white cursor-pointer">
 									<FaGithub />
-								</a>
+								</div>
 							</Link>
 						)}
 						{project.live && (
 							<Link href={project.live}>
-								<a className="mr-3 text-gray-300 hover:text-white cursor-pointer">
+								<div className="mr-3 text-gray-300 hover:text-white cursor-pointer">
 									Live
-								</a>
+								</div>
 							</Link>
 						)}
 					</div>

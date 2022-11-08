@@ -46,7 +46,7 @@ export default function Header({children}: { children: ReactNode }) {
 					<div className={"hidden m-auto md:flex justify-start"}>
 						{localeText.links.map((link: any, i: number) => (
 							<Link key={link.name} href={link.href} passHref>
-								<a
+								<div
 									className={`
 									${router.pathname == link.href
 										? `${colors[i]} font-bold`
@@ -55,7 +55,7 @@ export default function Header({children}: { children: ReactNode }) {
 										hover:text-white mx-4 cursor-pointer transition-all duration-200`}
 								>
 									{link.name}
-								</a>
+								</div>
 							</Link>
 						))}
 					</div>
@@ -72,9 +72,9 @@ export default function Header({children}: { children: ReactNode }) {
 					</div>
 					<div className={"hidden md:block"}>
 						<Link href={"https://github.com/Freddiiy"}>
-							<a>
+							<div>
 								<GoMarkGithub className={"text-white w-8 h-8"}/>
-							</a>
+							</div>
 						</Link>
 					</div>
 				</div>
@@ -87,17 +87,9 @@ export default function Header({children}: { children: ReactNode }) {
 	function ProfileMenu() {
 		return (
 			<>
-				<Popover className={"p-3"}>
+				<Popover className={"py-3"}>
 					<Popover.Button className={"custom-focus"}>
 						<div className={"flex justify-start"}>
-							<div className={"relative w-12 h-12 mr-3"}>
-								<Image
-									src={"/profile.png"}
-									alt={"Profile picture"}
-									layout={"fill"}
-									className={"rounded-full"}
-								/>
-							</div>
 							<div className={"flex flex-col justify-start items-start"}>
 								<h3 className={"text-xl font-bold"}>Frederik</h3>
 								<p className={"text-gray-400 text-xs"}>
@@ -110,7 +102,7 @@ export default function Header({children}: { children: ReactNode }) {
 						appear
 						as={Fragment}
 						enter="transition ease-out duration-200"
-						enterFrom="opacity-0 translate-y-1"
+						enterFrom="opacity-0 translate-y-2"
 						enterTo="opacity-100 translate-y-0"
 						leave="transition ease-in duration-150"
 						leaveFrom="opacity-100 translate-y-0"
@@ -138,12 +130,12 @@ export default function Header({children}: { children: ReactNode }) {
 				>
 					<Transition.Child
 						as={Fragment}
-						enter="ease-out duration-300"
-						enterFrom="opacity-0 scale-95"
-						enterTo="opacity-100 scale-100"
-						leave="ease-in duration-200"
-						leaveFrom="opacity-100 scale-100"
-						leaveTo="opacity-0 scale-95"
+						enter="transition ease-out duration-300"
+						enterFrom="opacity-0 -translate-y-52 scale-95"
+						enterTo="opacity-100 translate-y-0 scale-100"
+						leave="transition ease-in duration-400"
+						leaveFrom="opacity-100 translate-y-0 scale-100"
+						leaveTo="opacity-0 -translate-y-52 scale-95"
 					>
 						<Dialog.Panel className={"w-full"}>
 							<div

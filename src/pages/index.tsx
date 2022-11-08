@@ -1,7 +1,5 @@
 import type {InferGetStaticPropsType, NextPage} from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Card from "../components/Card/Card";
 import React, {ReactElement, ReactNode, useEffect, useState} from "react";
 import {FiArrowDown} from "react-icons/fi";
 import {
@@ -198,11 +196,6 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 					<SkillsIcon element={<FaDocker />} title={"Docker"} />
 					<SkillsIcon element={<FaGithub />} title={"GitHub"} />
 				</div>
-				<div className="flex justify-center pt-12">
-					<Link href={"/contact"} passHref>
-						<Button color="purple">{data.actionButton}</Button>
-					</Link>
-				</div>
 			</section>
 		);
 
@@ -220,7 +213,7 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 
 	function ContactSection() {
 		return (
-			<section className="container mx-auto">
+			<section className="container mx-auto pb-16">
 				<ContactPage />
 			</section>
 		);
