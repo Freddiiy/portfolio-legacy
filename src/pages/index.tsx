@@ -46,7 +46,7 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 				<section className={"overflow-hidden"}>
 					<div
 						className={
-							"container flex h-screen w-full mx-auto px-4 justify-center items-center"
+							"max-w-7xl mx-auto flex h-screen w-full px-4 justify-center items-center"
 						}
 					>
 						<div className={"flex flex-col items-center justify-center"}>
@@ -105,7 +105,7 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 			<>
 				<div
 					className={
-						"container mx-auto grid justify-center lg:grid-cols-3 lg:max-w-7xl"
+						"max-w-7xl mx-auto grid justify-center lg:grid-cols-3 lg:max-w-7xl"
 					}
 				>
 					<FeatureCard
@@ -181,7 +181,7 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 
 	function Skills() {
 		return (
-			<section className="container mx-auto mt-20 w-full max-w-7xl mb-16">
+			<section className="max-w-7xl mx-auto mt-20 w-full mb-16">
 				<h3 className="text-center text-white text-xl sm:text-4xl sm:pb-8 font-bold mb-4">
 					{data.dev}
 				</h3>
