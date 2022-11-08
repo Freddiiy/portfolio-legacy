@@ -126,7 +126,7 @@ export default function ContactForm() {
 									value={formData.message}
 									onChange={handleChange}
 									placeholder={contactText.messagePlaceholder}
-									className="mt-2 border border-neutral-400 outline-none focus:border-purple-400 focus:border block w-full shadow-sm sm:text-sm px-4 py-1 rounded-md bg-black transition-all duration-200 resize-none font-bold"
+									className="mt-2 border border-neutral-500 outline-none focus:border-purple-400 focus:border block w-full shadow-sm sm:text-sm px-4 py-1 rounded-md bg-black transition-all duration-200 resize-none font-bold"
 									rows={6}
 								/>
 							</div>
