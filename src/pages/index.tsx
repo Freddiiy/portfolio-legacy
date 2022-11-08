@@ -22,6 +22,8 @@ import {handleLocaleMd, useLocale} from "../hooks/useLocale";
 import ContactPage from "../features/Contact/ContactPage";
 import headerLocale from "../locales/header.json";
 import {GetStaticProps} from "next";
+import SubText from "../components/SubText";
+import Title from "../components/Title";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	return handleLocaleMd("index", ctx);
@@ -171,7 +173,7 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 						</div>
 						<div className={"ml-3"}>
 							<h3 className={"font-bold text-xl text-white"}>{title}</h3>
-							<p className={"text-gray-400"}>{text}</p>
+							<SubText>{text}</SubText>
 						</div>
 					</div>
 				</>
@@ -181,11 +183,9 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 
 	function Skills() {
 		return (
-			<section className="max-w-7xl mx-auto mt-20 w-full mb-16">
-				<h3 className="text-center text-white text-xl sm:text-4xl sm:pb-8 font-bold mb-4">
-					{data.dev}
-				</h3>
-				<div className="flex flex-row gap-10 justify-center m-6 flex-wrap">
+			<section className="max-w-7xl mx-auto mt-10 sm:mt-20 w-full px-2 mb-16">
+				<Title text={data.dev}/>
+				<div className="flex flex-row gap-10 justify-center mt-6 flex-wrap">
 					<SkillsIcon element={<FaJsSquare />} title={"JS"} />
 					<SkillsIcon element={<SiTypescript size={42} />} title={"TS"} />
 					<SkillsIcon element={<FaReact />} title={"React"} />
@@ -213,7 +213,7 @@ const Home: NextPage = ({data}: InferGetStaticPropsType<typeof getStaticProps>) 
 
 	function ContactSection() {
 		return (
-			<section className="container mx-auto pb-16">
+			<section className="container mx-auto pb-16 px-2">
 				<ContactPage />
 			</section>
 		);
