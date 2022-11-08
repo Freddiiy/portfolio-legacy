@@ -22,10 +22,6 @@
       {
         "name": "Kontakt",
         "href": "/contact"
-      },
-      {
-        "name": "Resumé",
-        "href": "/resume.pdf"
       }
     ]
   },
@@ -52,10 +48,6 @@
       {
         "name": "Contact",
         "href": "/contact"
-      },
-      {
-        "name": "Resumé",
-        "href": "/resume.pdf"
       }
     ]
   }
