@@ -16,7 +16,7 @@ import {
 import {TbBrandNextjs, TbBrandSvelte} from "react-icons/tb";
 import {SiTypescript} from "react-icons/si";
 import {handleLocaleMd, useLocale} from "../hooks/useLocale";
-import ContactPage from "../features/Contact/ContactPage";
+import ContactPage from "../components/Contact/ContactPage";
 import {GetStaticProps} from "next";
 import SubText from "../components/SubText";
 import Title from "../components/Title";

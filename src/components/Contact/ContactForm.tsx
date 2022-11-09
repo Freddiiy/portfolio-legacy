@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FormEvent, useEffect, useRef, useState} from "react";
 import axios from "axios";
-import Button from "../../components/Button";
-import Input from "../../components/Form/Input";
+import Button from "../Button";
+import Input from "../Form/Input";
 import {useLocale} from "../../hooks/useLocale";
 import contactLocale from "../../locales/contactform.json";
 
@@ -13,24 +13,23 @@ export default function ContactForm() {
 	const disableButton = () => setButtonDisabled(true);
 	const enableButton = () => setButtonDisabled(false);
 	const [deg, setDeg] = useState(0);
-	const formBox = React.useRef<HTMLDivElement>(null);
-
+	const formBox = React.useRef<HTMLFormElement>(null);
 
 	useEffect(() => {
 		window.addEventListener("mousemove", (e) => {
 			if (formBox.current == null) return;
-			const rekt = formBox.current.getBoundingClientRect();
-			const anchorX = rekt.left + rekt.width / 2;
-			const anchorY = rekt.top + rekt.height / 2;
+			const rect = formBox.current.getBoundingClientRect();
+			const anchorX = rect.left + rect.width / 2;
+			const anchorY = rect.top + rect.height / 2;
 
-			const angleDeg = angle(e.clientX, e.clientY, anchorX, anchorY);
+			const angleDeg = angleToMouse(e.clientX, e.clientY, anchorX, anchorY);
 			setDeg(angleDeg);
 		});
 
 		return window.removeEventListener("mousemove", () => setDeg(0))
 	}, [setDeg])
 
-	const angle = (mx: number, my: number, ex: number, ey: number) => {
+	const angleToMouse = (mx: number, my: number, ex: number, ey: number) => {
 		const dy = ey - my;
 		const dx = ey - mx;
 		const rad = Math.atan2(dy, dx);
@@ -107,10 +106,9 @@ export default function ContactForm() {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} ref={formBox}>
 				<div
-					ref={formBox}
-					className="p-0.5 bg-gradient-to-b from-purple-600 via-emerald-400 rounded-xl"
+					className="p-0.5 rounded-xl"
 					style={{
 						backgroundImage: `linear-gradient(${deg + 45}deg, rgba(147,51,234,1) 0%, rgba(74,222,128,1) 50%, rgba(0,0,0,0) 80%, rgba(0,0,0,0) 100%)`,
 					}}>

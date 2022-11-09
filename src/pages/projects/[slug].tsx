@@ -1,9 +1,6 @@
 import {
 	GetStaticPaths,
 	GetStaticProps,
-	InferGetServerSidePropsType,
-	InferGetStaticPropsType,
-	NextPage,
 } from "next";
 import Head from "next/head";
 import slugify from "slugify";
@@ -86,12 +83,12 @@ function Project({project}: {project: IProject}) {
 						)}
 					</div>
 					{project.img && (
-						<div className="relative h-72 w-72">
+						<div className="relative h-72 w-auto">
 							<Image
 								src={project.img}
 								alt=""
-								layout="fill"
-								className="rounded-xl"
+								className={"rounded-xl object-cover"}
+								fill
 							/>
 						</div>
 					)}

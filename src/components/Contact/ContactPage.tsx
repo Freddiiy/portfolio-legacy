@@ -1,8 +1,8 @@
 import ContactForm from "./ContactForm";
 import contactLocale from "../../locales/contactform.json";
 import {useLocale} from "../../hooks/useLocale";
-import Title from "../../components/Title";
-import SubText from "../../components/SubText";
+import Title from "../Title";
+import SubText from "../SubText";
 
 export default function ContactSection() {
 	let contactText = useLocale(contactLocale);
