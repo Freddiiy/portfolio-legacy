@@ -58,7 +58,8 @@ function Project({project}: { project: IProject }) {
 			</Head>
 			<section className="container mx-auto pt-20 px-4">
 				<div className={"relative"} style={{
-					transform: `translate3d(0px, ${scrollDistance * 0.60}px, 0px)`
+					transform: `translate3d(0px, ${scrollDistance * 0.60}px, 0px) scale(${1 - (scrollDistance * 0.0004)})`,
+					opacity: `${1 - (scrollDistance * 0.004)}`,
 				}}>
 
 					<Link href={"/projects"} passHref>
