@@ -93,7 +93,7 @@ function Project({project}: { project: IProject }) {
 							)}
 						</div>
 						{project.img && (
-							<div className="relative h-72 w-auto z-10">
+							<div className="relative h-40 sm:h-72 w-auto z-10">
 								<Image
 									src={project.img}
 									alt=""
