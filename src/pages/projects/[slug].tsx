@@ -59,7 +59,7 @@ function Project({project}: { project: IProject }) {
 			<section className="container mx-auto pt-20 px-4">
 				<div className={"relative"} style={{
 					transform: `translate3d(0px, ${scrollDistance * 0.60}px, 0px) scale(${1 - (scrollDistance * 0.0004)})`,
-					opacity: `${1 - (scrollDistance * 0.004)}`,
+					opacity: `${1 - (scrollDistance * 0.0025)}`,
 				}}>
 
 					<Link href={"/projects"} passHref>
@@ -104,7 +104,7 @@ function Project({project}: { project: IProject }) {
 						)}
 					</div>
 				</div>
-				<div className={"relative bg-black z-20 py-12"}>
+				<div className={"relative bg-black z-20 pt-4 pb-12"}>
 					<p>{project.desc}</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 						labore et dolore magna aliqua. Ut tortor pretium viverra suspendisse potenti nullam ac. Et
