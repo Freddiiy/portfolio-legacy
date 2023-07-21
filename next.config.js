@@ -9,6 +9,11 @@ const nextConfig = {
         config.resolve.fallback = {fs: false};
         return config;
     },
+    images: {
+        domains: [
+            "media.licdn.com"
+        ]
+    },
 }
 
 module.exports = nextConfig

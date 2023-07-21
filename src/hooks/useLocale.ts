@@ -17,7 +17,7 @@ interface availableLocale {
 
 export const handleLocaleMd = (_slug: string, ctx: GetStaticPropsContext) => {
 	const {slug, data, content} = getLocaleMd(_slug, ctx.locale)
-	const parsedMarkdown = marked.parse(content);
+	const parsedMarkdown = marked.parse(content, {mangle: false, headerIds: false});
 
 	return {props: {slug, data, parsedMarkdown}}
 }

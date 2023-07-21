@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {FiMapPin} from "react-icons/fi";
-import {GoMarkGithub} from "react-icons/go";
+import {FiGithub} from "react-icons/fi";
 import {FiLinkedin} from "react-icons/fi";
 import Link from "next/link";
 import headerLocale from "../../locales/header.json";
@@ -23,7 +23,7 @@ function ProfileHeader() {
 		<>
 			<div className={"flex flex-col items-center justify-center"}>
 				<div className={"relative w-16 p-16 rounded-full mb-2"}>
-					<Image src={"/profile.png"} alt={"Mig"} fill/>
+					<Image src={"https://media.licdn.com/dms/image/D4E03AQHnR6ObHzQK3w/profile-displayphoto-shrink_800_800/0/1689364749431?e=1695254400&v=beta&t=a71-sigEk5veoC7kZsH7n8hpje0WUA0AYXIOU345W0Y"} alt={"Mig"} fill/>
 				</div>
 				<h1 className={"text-black text-2xl font-bold mb-3"}>
 					{localeText.profile.name}
@@ -52,7 +52,7 @@ function GithubButton() {
 				>
 					<button className={"flex flex-row items-center"}>
 						<div className={"mr-4"}>
-							<GoMarkGithub className={"w-5 h-5"}/>
+							<FiGithub className={"w-6 h-6"}/>
 						</div>
 						<p className={"text-white font-bold"}>GitHub</p>
 					</button>

@@ -1,8 +1,7 @@
 import {Fragment, ReactNode, useEffect, useRef, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {GoMarkGithub} from "react-icons/go";
-import {FiMenu, FiX} from "react-icons/fi";
+import {FiMenu, FiX, FiGithub, FiGift} from "react-icons/fi";
 
 import {Dialog, Transition, Popover} from "@headlessui/react";
 import ProfileCard from "../ProfileCard/ProfileCard";
@@ -10,6 +9,7 @@ import headerLocale from "../../locales/header.json";
 import {useRouter} from "next/router";
 import {useLocale} from "../../hooks/useLocale";
 import {useScrollCheck} from "../../hooks/useScrollCheck";
+import {DiGithubBadge} from "react-icons/di";
 
 const colors = ["text-purple-400", "text-emerald-400", "text-blue-400", "text-pink-500", "text-orange-500"]
 
@@ -68,7 +68,7 @@ export default function Header({children}: { children: ReactNode }) {
 					<div className={"hidden md:block"}>
 						<Link href={"https://github.com/Freddiiy"}>
 							<div>
-								<GoMarkGithub className={"text-white w-8 h-8"}/>
+								<DiGithubBadge className={"text-white w-8 h-8"}/>
 							</div>
 						</Link>
 					</div>
@@ -113,42 +113,8 @@ export default function Header({children}: { children: ReactNode }) {
 	}
 
 	function ModalMenu() {
-		let focusRef = useRef(null);
 		return (
-			<Transition appear show={isMenuOpen} as={Fragment}>
-				<Dialog
-					as={"div"}
-					open={isMenuOpen}
-					onClose={closeMenu}
-					className={"fixed inset-0 z-40 bg-black h-screen w-full"}
-					initialFocus={focusRef}
-				>
-					<Transition.Child
-						as={Fragment}
-						enter="transition ease-out duration-300"
-						enterFrom="opacity-0 -translate-y-52 scale-95"
-						enterTo="opacity-100 translate-y-0 scale-100"
-						leave="transition ease-in duration-400"
-						leaveFrom="opacity-100 translate-y-0 scale-100"
-						leaveTo="opacity-0 -translate-y-52 scale-95"
-					>
-						<Dialog.Panel className={"w-full"}>
-							<div
-								className={"flex justify-end mt-4 mr-5 cursor-pointer"}
-								onClick={closeMenu}
-							>
-								<FiX className={"w-8 h-8 text-white"}/>
-							</div>
-							<Dialog.Title
-								className={"text-2xl text-center font-medium text-white"}
-							>
-								Menu
-							</Dialog.Title>
-							<div
-								className="tap keyboard before accessibility trapper"
-								ref={focusRef}
-							/>
-							<div className={"flex flex-col text-center mt-20"}>
+							<div className={"flex flex-col text-center mt-20 space-y-4"}>
 								{localeText.links.map((link: any, i: number) => (
 									<MobileLink
 										key={link.name}
@@ -163,10 +129,6 @@ export default function Header({children}: { children: ReactNode }) {
 									iter={1}
 								/>
 							</div>
-						</Dialog.Panel>
-					</Transition.Child>
-				</Dialog>
-			</Transition>
 		);
 	}
 
@@ -201,9 +163,9 @@ function LocaleSwitch() {
 	const router = useRouter();
 	const {pathname, asPath, query} = router;
 
-	function handleLocaleChange() {
+	async function handleLocaleChange() {
 		setIsEnglishState(!isEnglishState);
-		router.push({pathname, query}, asPath, {locale: localeState});
+		await router.push({pathname, query}, asPath, {locale: localeState});
 	}
 
 	return (
